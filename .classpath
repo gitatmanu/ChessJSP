@@ -7,7 +7,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/mia/eclipse-workspace/ChessJSP/lib/json.jar">
+	<classpathentry kind="lib" path="/home/cf19manel.mata/eclipse-workspace/ChessJSP/lib/json.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

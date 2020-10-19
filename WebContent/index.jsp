@@ -37,7 +37,7 @@
 	function clickCasilla(casilla) {
 		var data = new FormData();
 		data.append("casilla", document.getElementById("A1"));
-		fetch('http://localhost:8080/ChessJSP/Move', {
+		fetch('Move', {
 			method: 'POST',
 			body: data
 		})
