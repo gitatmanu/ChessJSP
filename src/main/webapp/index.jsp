@@ -1,3 +1,4 @@
+<%@page import="Chess.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,28 +8,22 @@
 <title>Prototipo tablero ajedrez</title>
 <style type="text/css">
 
-	body {
-		background-color: pink;
-	}
-
 	#tablero {
-		width: 560px;
-		height: 560px;
+		width: 1000px;
+		height: 1000px;
 	}
 
-
+        .fila {
+            clear: both;
+        }
 	.casilla {
-		width: 70px;
-		height: 70px;
+		width: 65px;
+		height: 65px;
 		float: left;
   		text-align: center;
-  		margin: auto;
-  		font-size:4em;
+  		font-size:3.5em;
   	}
 
-	.tenue {background-color: white;}
-
-	.opaca {background-color: gray;}
 
 </style>
 
@@ -45,97 +40,33 @@
 			console.log(text);
 		})
 		.catch(function(error){
-			console.error(error)
-		})
+			console.error(error);
+		});
 		
 	}
 
 </script>
 </head>
-<body>
-
-	<main id="tablero">
-		<div class="fila8">
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>		
-		</div>
-		<div class="fila7">
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>		
-		</div>
-		<div class="fila6">
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>		
-		</div>
-		<div class="fila5">
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>		
-		</div>
-		<div class="fila4">
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>		
-		</div>
-		<div class="fila3">
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>
-			<div class="casilla opaca"></div>
-			<div class="casilla tenue"></div>		
-		</div>
-		<div class="fila2">
-			<div id="A2" class="casilla tenue">&#9817;</div>
-			<div id="B2" class="casilla opaca">&#9817;</div>
-			<div id="C2" class="casilla tenue">&#9817;</div>
-			<div id="D2" class="casilla opaca">&#9817;</div>
-			<div id="E2" class="casilla tenue">&#9817;</div>
-			<div id="F2" class="casilla opaca">&#9817;</div>
-			<div id="G2" class="casilla tenue">&#9817;</div>
-			<div id="H2" class="casilla opaca">&#9817;</div>		
-		</div>
-		<div class="fila1">
-			<div id="A1" class="casilla opaca" onclick="clickCasilla('A1')">&#9814;</div>
-			<div id="B1" class="casilla tenue" onclick="clickCasilla('B1')">&#9816;</div>
-			<div id="C1" class="casilla opaca" onclick="clickCasilla('C1')">&#9815;</div>
-			<div id="D1" class="casilla tenue" onclick="clickCasilla('D1')">&#9813;</div>
-			<div id="E1" class="casilla opaca" onclick="clickCasilla('E1')">&#9812;	</div>
-			<div id="F1" class="casilla tenue" onclick="clickCasilla('F1')">&#9815;	</div>
-			<div id="G1" class="casilla opaca" onclick="clickCasilla('G1')">&#9816;	</div>
-			<div id="H1" class="casilla tenue" onclick="clickCasilla('H1')">&#9814;	</div>		
-		</div>
-	</main>
+<body>    
+    <%
+        Partida partida = new Partida(Partida.tableroDefault());
+        String color = "white";
+        out.println("<main id='tablero'>");
+        for (int i = 0; i <= 7; i++) {
+            out.println("<div class='fila'>");
+            for (int j = 0; j <= 7; j++) {
+                out.println("<div class='casilla' " + "style='background-color: " + color + "' >");
+                if(partida.getTablero()[i][j] != null){
+                    out.println("<span>" + partida.getTablero()[i][j].toString(partida.getTablero()[i][j].getColor()) + "</span>");
+                }
+                    out.println("</div>");
+                color = color == "white" ? "brown   " : "white";
+            }
+            color = color == "white" ? "brown" : "white";
+            out.println("</div>");  
+        }
+        out.println("</main>");
+    %>
 
 </body>
 </html>

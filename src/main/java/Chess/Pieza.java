@@ -4,11 +4,16 @@ public abstract class Pieza {
 	
 	private Color color;
 	
-	public abstract Boolean hayMovimientoValido();
-	public abstract Pieza[][] movimientosValidos();
+        public Pieza(Color color) {
+            this.color = color;
+        }
+        
+        public Color getColor() {
+            return this.color;
+        }
+        public abstract String toString(Color color);
 
-}
+//	public abstract Boolean hayMovimientoValido();
+//	public abstract Pieza[][] movimientosValidos();
 
-enum Color {
-	BLANCAS, NEGRAS;
 }
