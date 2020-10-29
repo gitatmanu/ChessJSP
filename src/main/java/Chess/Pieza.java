@@ -13,7 +13,6 @@ public abstract class Pieza {
         }
         public abstract String toString(Color color);
 
-//	public abstract Boolean hayMovimientoValido();
-//	public abstract Pieza[][] movimientosValidos();
+	//public abstract Pieza[][] movimientosValidos();
 
 }

@@ -1,4 +1,4 @@
-package Chess;
+    package Chess;
 import java.util.ArrayList;
 
 public class Partida {
@@ -6,7 +6,7 @@ public class Partida {
 	private Pieza[][] tablero;
 	private ArrayList<Pieza> cementerio = new ArrayList<>();
 	private Turno turno = Turno.BLANCAS;
-
+        private boolean manoAlzada = false;
 	
 	public Partida(Pieza[][] tablero) {
 		this.tablero = tablero;
@@ -87,6 +87,18 @@ public class Partida {
 		this.getCementerio().add(jeje);
 	}
 
+    public boolean isManoAlzada() {
+        return manoAlzada;
+    }
+
+    public void setManoAlzada(boolean manoAlzada) {
+        this.manoAlzada = manoAlzada;
+    }
+ 
+    public static void main (String[] args) {
+    
+    }
+    
 }
 
 enum Turno {

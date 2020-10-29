@@ -1,0 +1,56 @@
+body {background-color: magenta; margin: 0}
+
+ main {
+         height: 100vh;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         margin: 0 auto;
+ }
+
+ #tablero {
+     box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgba(0,0,0,.3);
+
+ }
+
+ .fila {
+     clear: both;
+ }
+ 
+ .casilla {
+         width: 65px;
+         height: 65px;
+         float: left;
+         text-align: center;
+         font-size:3.5em;         
+ }
+
+/* .casilla:hover {
+     box-shadow: inset 0 0 0 4px #3BEB6C;
+     transition: .05s ease;
+ }*/
+ 
+ * {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+ }
+ 
+ recuadro {
+         background-color: pink;
+         height: 115vh;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         margin: 0 auto; 
+ }
+ 
+@-webkit-keyframes tiembla{
+  0%  { -webkit-transform:rotateZ(-5deg); }
+  50% { -webkit-transform:rotateZ( 0deg) scale(.8); }
+  100%{ -webkit-transform:rotateZ( 5deg); }
+}
