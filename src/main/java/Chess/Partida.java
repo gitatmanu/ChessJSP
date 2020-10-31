@@ -77,9 +77,9 @@ public class Partida {
 	}
 	*/
 
-	public static void inicializaPartida() {
+	public static Partida inicializaPartida() {
 		
-		Partida partida = new Partida(tableroDefault());
+		return new Partida(tableroDefault());
 		
 	}
 
@@ -87,16 +87,8 @@ public class Partida {
 		this.getCementerio().add(jeje);
 	}
 
-    public boolean isManoAlzada() {
-        return manoAlzada;
-    }
-
-    public void setManoAlzada(boolean manoAlzada) {
-        this.manoAlzada = manoAlzada;
-    }
  
     public static void main (String[] args) {
-    
     }
     
 }

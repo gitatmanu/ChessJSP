@@ -1,12 +1,21 @@
-var piezaAlzada = false;
-
-function imprimirResultados(movimientosValidos) {
-    if(piezaAlzada === true) {
-        pintaTableroEstandar();
-        piezaAlzada = false;
-    } else {
+function imprimirMovimientosValidos(movimientosValidos) {
         pintaCasillasValidas(movimientosValidos);
-        piezaAlzada = true;
+}
+
+function tableroModificado(tablero) {
+    var casilla = "";
+    var fila = 'A';
+
+    for (i = 0; i <= 7; i++) {
+        for (j = 0; j <= 7; j++) {
+            casilla = fila + (j+1);
+            if (tablero[i][j] !== null) {
+                document.getElementById("span" + casilla).innerHTML = tablero[i][j]["ascii"];
+            }else {
+                document.getElementById("span" + casilla).innerHTML = "";
+            }
+        }
+        fila = nextChar(fila);
     }
 }
 
@@ -26,6 +35,7 @@ function pintaCasillasValidas(movimientosValidos) {
         fila = nextChar(fila);
     }
 }
+
 function pintaTableroEstandar() {
     var color = "white";
     var casilla = "";
@@ -34,7 +44,6 @@ function pintaTableroEstandar() {
     for (i = 0; i <= 7; i++) {
         for (j = 0; j <= 7; j++) {
             casilla = fila + (j+1);
-            console.log(casilla);
             document.getElementById(casilla).style.backgroundColor = color;
             document.getElementById(casilla).style.boxShadow = "none";
             document.getElementById(casilla).style.animation = "none";

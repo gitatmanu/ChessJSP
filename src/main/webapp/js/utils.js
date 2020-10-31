@@ -1,7 +1,13 @@
+var piezaAlzada = false;
+
 function comprobarCasilla(casilla) {
         
-        const data = new FormData();
+        const data = new FormData();        
+        var clave = piezaAlzada !== true ? "alzarPieza" : "jugada";
+    
+        data.append("clave", clave);
         data.append("casilla", casilla);
+
         fetch('Move', {
                 method: 'POST',
                 body: data
@@ -14,12 +20,19 @@ function comprobarCasilla(casilla) {
            }
 
         })
-        .then(function(text) {         
-            imprimirResultados(text);
+        .then(function(text) {
+            if(typeof(text[0][0]) === "boolean") {
+                imprimirMovimientosValidos(text);
+            } else if (text === "no valido") {
+                pintaTableroEstandar();
+            }else{
+                tableroModificado(text);
+                pintaTableroEstandar();
+            } 
+            piezaAlzada = false;
     })
         .catch(function(err) {
            console.log(err);
         });
-
 }
 

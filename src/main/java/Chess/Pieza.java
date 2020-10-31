@@ -1,9 +1,9 @@
 package Chess;
 
 public abstract class Pieza {
-	
-	private Color color;
-	
+
+        private Color color;
+    
         public Pieza(Color color) {
             this.color = color;
         }
@@ -11,8 +11,7 @@ public abstract class Pieza {
         public Color getColor() {
             return this.color;
         }
-        public abstract String toString(Color color);
 
-	//public abstract Pieza[][] movimientosValidos();
+	public abstract Boolean[][] movimientosValidos(String pos);
 
 }

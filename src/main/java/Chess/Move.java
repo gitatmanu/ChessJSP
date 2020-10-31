@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
-import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Servlet implementation class Move
@@ -27,30 +28,76 @@ public class Move extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+                
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();    
                 String casilla = request.getParameter("casilla");
+                                
+                Pieza[][] tablero = new Pieza[8][8]; // Inicializo tablero
+
+
+                tablero[0][0] = new Torre(Color.NEGRAS);
+                tablero[0][1] = new Caballo(Color.NEGRAS);
+                tablero[0][2] = new Alfil(Color.NEGRAS);
+                tablero[0][3] = new Reina(Color.NEGRAS);
+                tablero[0][4] = new Rey(Color.NEGRAS);
+		tablero[0][5] = new Alfil(Color.NEGRAS);
+                tablero[0][6] = new Caballo(Color.NEGRAS);
+                tablero[0][7] = new Torre(Color.NEGRAS);
                 
+                tablero[1][0] = new Peon(Color.NEGRAS);
+                tablero[1][1] = new Peon(Color.NEGRAS);
+                tablero[1][2] = new Peon(Color.NEGRAS);
+                tablero[1][3] = new Peon(Color.NEGRAS);
+                tablero[1][4] = new Peon(Color.NEGRAS);
+                tablero[1][5] = new Peon(Color.NEGRAS);
+                tablero[1][6] = new Peon(Color.NEGRAS);
+                tablero[1][7] = new Peon(Color.NEGRAS);
+                
+                
+                tablero[5][0] = new Peon(Color.BLANCAS);
+                tablero[6][1] = new Peon(Color.BLANCAS);
+                tablero[6][2] = new Peon(Color.BLANCAS);
+                tablero[6][3] = new Peon(Color.BLANCAS);
+                tablero[6][4] = new Peon(Color.BLANCAS);
+                tablero[6][5] = new Peon(Color.BLANCAS);
+                tablero[6][6] = new Peon(Color.BLANCAS);
+                tablero[6][7] = new Peon(Color.BLANCAS);
+                
+                tablero[7][0] = new Torre(Color.BLANCAS);
+                tablero[7][1] = new Caballo(Color.BLANCAS);
+                tablero[7][2] = new Alfil(Color.BLANCAS);
+                tablero[7][3] = new Reina(Color.BLANCAS);
+                tablero[7][4] = new Rey(Color.BLANCAS);
+		tablero[7][5] = new Alfil(Color.BLANCAS);
+                tablero[7][6] = new Caballo(Color.BLANCAS);
+                tablero[7][7] = new Torre(Color.BLANCAS);
+                        
                 int iCasilla = charToNum(casilla.charAt(0));
                 int jCasilla = casilla.charAt(1) - 1;
-               
-//                partida.getTablero();
+                
+                switch(request.getParameter("clave")) {
+                    case "jugada":
 
-                String json = new Gson().toJson((casilla));
+//                        if(esJugadaValida()) {
+//                            
+//                        } else {
+//                            
+//                        }
+                        
+                        break;
+                    case "alzarPieza":
+                        break;
+                }
+                
+                
+                
+
+
+                
+                String json = new Gson().toJson(tablero);
 		out.println(json);
 
                 out.close();
