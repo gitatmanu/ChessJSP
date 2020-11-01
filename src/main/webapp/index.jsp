@@ -29,7 +29,7 @@
             casilla = fila + String.valueOf(j+1);
             out.println("<div id='" + casilla + "' class='casilla' style='background-color: " + color + "' onclick='comprobarCasilla(\"" + casilla + "\")'>");
             if(partida.getTablero()[i][j] != null){
-                out.println("<span id='"+ "span"+ casilla + "'>" + partida.getTablero()[i][j] + "</span>");
+                out.println("<span id='"+ "span"+ casilla + "'>" + partida.getTablero()[i][j].getAscii() + "</span>");
             }else {out.println("<span id='" + "span" + casilla + "'></span>");}
                 out.println("</div>");
             color = color == "white" ? "brown   " : "white";

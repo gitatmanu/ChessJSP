@@ -3,15 +3,16 @@ package Chess;
 public abstract class Pieza {
 
         private Color color;
-    
-        public Pieza(Color color) {
+        private String ascii;
+        
+        public Pieza(Color color, String ascii) {
             this.color = color;
+            this.ascii = ascii;
         }
         
+        public String getAscii(){return this.ascii;}
         
-        public Color getColor() {
-            return this.color;
-        }
+        public Color getColor() {return this.color;}
 
 	public abstract Boolean[][] movimientosValidos(String pos);
 

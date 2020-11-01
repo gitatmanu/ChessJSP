@@ -4,14 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Caballo extends Pieza {
-
-    private String ascii = this.getColor() == Color.BLANCAS ? "&#9816;": "&#9822;";
         
     public Caballo(Color color) {
-        super(color);
-    }
-    public String getAscii() {
-        return this.ascii;
+        super(color, color == Color.BLANCAS ? "&#9816;": "&#9822;");
     }
 
     @Override

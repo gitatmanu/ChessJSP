@@ -1,16 +1,11 @@
 package Chess;
 
 public class Reina extends Pieza {
-
-    private String ascii = this.getColor() == Color.BLANCAS ? "&#9813;": "&#9819;";
     
     public Reina(Color color) {
-        super(color);
+        super(color, color == Color.BLANCAS ? "&#9813;": "&#9819;");
     }
 
-    public String getAscii() {
-        return this.ascii;
-    }
     @Override
     public Boolean[][] movimientosValidos(String pos) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
