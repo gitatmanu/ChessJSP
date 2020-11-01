@@ -21,7 +21,7 @@ function comprobarCasilla(casilla) {
 
         })
         .then(function(text) {
-            if(typeof(text[0][0]) === "boolean") {
+            if(text[0][0] === true || text[0][0] === false) {
                 imprimirMovimientosValidos(text);
             } else if (text === "no valido") {
                 pintaTableroEstandar();
@@ -29,7 +29,7 @@ function comprobarCasilla(casilla) {
                 tableroModificado(text);
                 pintaTableroEstandar();
             } 
-            piezaAlzada = false;
+            piezaAlzada = piezaAlzada === true ? false : true;
     })
         .catch(function(err) {
            console.log(err);

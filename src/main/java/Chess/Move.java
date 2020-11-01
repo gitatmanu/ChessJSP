@@ -57,7 +57,7 @@ public class Move extends HttpServlet {
                 tablero[1][7] = new Peon(Color.NEGRAS);
                 
                 
-                tablero[5][0] = new Peon(Color.BLANCAS);
+                tablero[4][0] = new Peon(Color.BLANCAS);
                 tablero[6][1] = new Peon(Color.BLANCAS);
                 tablero[6][2] = new Peon(Color.BLANCAS);
                 tablero[6][3] = new Peon(Color.BLANCAS);
@@ -86,21 +86,21 @@ public class Move extends HttpServlet {
 //                        } else {
 //                            
 //                        }
-                        
+                        out.println(new Gson().toJson(tablero));
+                        out.close();
                         break;
                     case "alzarPieza":
+                        
+                        Boolean[][] mov = new Boolean[8][8];  
+                        mov[0][0] = false;
+                        mov[5][0] = true;
+                        mov[4][0] = true;
+
+                        out.println(new Gson().toJson(mov));
+                        out.close();
                         break;
                 }
-                
-                
-                
 
-
-                
-                String json = new Gson().toJson(tablero);
-		out.println(json);
-
-                out.close();
 	}
 
         public static int charToNum(char c) {      
