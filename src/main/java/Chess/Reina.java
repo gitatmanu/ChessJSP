@@ -8,11 +8,9 @@ public class Reina extends Pieza {
         super(color);
     }
 
-    public String toString(Color color) {
-
-    return color == Color.BLANCAS ? "&#9813;" : "&#9819;";
+    public String getAscii() {
+        return this.ascii;
     }
-
     @Override
     public Boolean[][] movimientosValidos(String pos) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

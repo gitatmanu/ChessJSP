@@ -1,4 +1,4 @@
-    package Chess;
+package Chess;
 import java.util.ArrayList;
 
 public class Partida {

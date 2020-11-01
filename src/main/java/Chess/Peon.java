@@ -7,7 +7,9 @@ public class Peon extends Pieza {
     public Peon(Color color) {
         super(color);
     }
-
+    public String getAscii() {
+        return this.ascii;
+    }
     @Override
     public Boolean[][] movimientosValidos(String pos) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
