@@ -16,7 +16,8 @@
 <body>
     <%
     Partida partida = Partida.inicializaPartida();
-
+    session.setAttribute("partida", partida);
+    
     String color = "white";
     String casilla = "";
     char fila = 'A';

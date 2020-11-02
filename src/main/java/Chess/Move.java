@@ -30,7 +30,8 @@ public class Move extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-   
+                HttpSession session = request.getSession();
+                Partida partida = (Partida) session.getAttribute("partida");
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();    
@@ -75,8 +76,8 @@ public class Move extends HttpServlet {
                 tablero[7][6] = new Caballo(Color.BLANCAS);
                 tablero[7][7] = new Torre(Color.BLANCAS);
                         
-                int iCasilla = charToNum(casilla.charAt(0));
-                int jCasilla = casilla.charAt(1) - 1;
+                int yCasilla = charToNum(casilla.charAt(0));
+                int xCasilla = casilla.charAt(1) - 1;
                 
                 switch(request.getParameter("clave")) {
                     case "jugada":
@@ -91,12 +92,9 @@ public class Move extends HttpServlet {
                         break;
                     case "alzarPieza":
                         
-                        Boolean[][] mov = new Boolean[8][8];  
-                        mov[0][0] = false;
-                        mov[5][0] = true;
-                        mov[5][2] = true;
-
-                        out.println(new Gson().toJson(mov));
+                        Boolean[][] movValidos = partida.getTablero()[yCasilla][xCasilla].movimientosValidos(casilla, partida);
+                        System.out.print(yCasilla + " " + xCasilla);
+                        out.println(new Gson().toJson(movValidos));
                         out.close();
                         break;
                 }

@@ -22,7 +22,8 @@ function comprobarCasilla(casilla) {
         })
         .then(function(text) {
             if(text[0][0] === true || text[0][0] === false) {
-                imprimirMovimientosValidos(text);
+                console.log("entra");
+                pintaCasillasValidas(text);
             } else if (text === "no valido") {
                 pintaTableroEstandar();
             }else{

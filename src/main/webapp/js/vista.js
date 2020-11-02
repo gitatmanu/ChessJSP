@@ -1,7 +1,3 @@
-function imprimirMovimientosValidos(movimientosValidos) {
-        pintaCasillasValidas(movimientosValidos);
-}
-
 function tableroModificado(tablero) {
     var casilla = "";
     var fila = 'A';
