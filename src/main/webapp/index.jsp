@@ -15,7 +15,7 @@
 </head>
 <body>
     <%
-    Partida partida = new Partida(Partida.tableroDefault());
+    Partida partida = Partida.inicializaPartida();
 
     String color = "white";
     String casilla = "";
@@ -42,7 +42,6 @@
     out.println("</div>");
     out.println("</main>");
         
-    session.setAttribute("partida", partida);
 %>
 
 </body>

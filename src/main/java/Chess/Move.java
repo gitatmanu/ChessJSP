@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Move
@@ -29,14 +30,13 @@ public class Move extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                
+   
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();    
                 String casilla = request.getParameter("casilla");
                                 
                 Pieza[][] tablero = new Pieza[8][8]; // Inicializo tablero
-
 
                 tablero[0][0] = new Torre(Color.NEGRAS);
                 tablero[0][1] = new Caballo(Color.NEGRAS);
@@ -57,7 +57,7 @@ public class Move extends HttpServlet {
                 tablero[1][7] = new Peon(Color.NEGRAS);
                 
                 
-                tablero[4][0] = new Peon(Color.BLANCAS);
+                tablero[6][0] = new Peon(Color.BLANCAS);
                 tablero[6][1] = new Peon(Color.BLANCAS);
                 tablero[6][2] = new Peon(Color.BLANCAS);
                 tablero[6][3] = new Peon(Color.BLANCAS);
@@ -67,7 +67,7 @@ public class Move extends HttpServlet {
                 tablero[6][7] = new Peon(Color.BLANCAS);
                 
                 tablero[7][0] = new Torre(Color.BLANCAS);
-                tablero[7][1] = new Caballo(Color.BLANCAS);
+                tablero[5][0] = new Caballo(Color.BLANCAS);
                 tablero[7][2] = new Alfil(Color.BLANCAS);
                 tablero[7][3] = new Reina(Color.BLANCAS);
                 tablero[7][4] = new Rey(Color.BLANCAS);
@@ -94,7 +94,7 @@ public class Move extends HttpServlet {
                         Boolean[][] mov = new Boolean[8][8];  
                         mov[0][0] = false;
                         mov[5][0] = true;
-                        mov[4][0] = true;
+                        mov[5][2] = true;
 
                         out.println(new Gson().toJson(mov));
                         out.close();

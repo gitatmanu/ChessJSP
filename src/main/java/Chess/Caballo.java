@@ -29,14 +29,15 @@ public class Caballo extends Pieza {
         
         for(int i = 0; i < movimientosAbsolutos.size(); i++) {
             
-//            // Si está fuera del tablero
-//            if(movimientosAbsolutos.get(i)[0] > 7 || movimientosAbsolutos.get(i)[0] < 0 || movimientosAbsolutos.get(i)[1] > 7 || movimientosAbsolutos.get(i)[1] < 0){
-//                movimientosAbsolutos.remove(i);
-//            }
-//            // Si casilla destino tiene pieza del mismo color
-//            if (this.getColor() == partida.getTablero()[movimientosAbsolutos.get(i)[0]][movimientosAbsolutos.get(i)[1]].getColor()){
-//                
-//            }
+            // Si está fuera del tablero
+            if(movimientosAbsolutos.get(i)[0] > 7 || movimientosAbsolutos.get(i)[0] < 0 || movimientosAbsolutos.get(i)[1] > 7 || movimientosAbsolutos.get(i)[1] < 0){
+                movimientosAbsolutos.remove(i);
+            }
+            // Si casilla destino tiene pieza del mismo color
+            if (partida.getTablero()[movimientosAbsolutos.get(i)[0]][movimientosAbsolutos.get(i)[1]].getColor() == this.getColor()){
+            } else {
+                
+            }
             
             
             

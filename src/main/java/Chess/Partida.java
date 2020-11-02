@@ -6,7 +6,6 @@ public class Partida {
 	private Pieza[][] tablero;
 	private ArrayList<Pieza> cementerio = new ArrayList<>();
 	private Turno turno = Turno.BLANCAS;
-        private boolean manoAlzada = false;
 	
 	public Partida(Pieza[][] tablero) {
 		this.tablero = tablero;
