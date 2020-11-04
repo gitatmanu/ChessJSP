@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
 public class Move extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+        
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -36,7 +37,7 @@ public class Move extends HttpServlet {
                 response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();    
                 String casilla = request.getParameter("casilla");
-                                
+
                 Pieza[][] tablero = new Pieza[8][8]; // Inicializo tablero
 
                 tablero[0][0] = new Torre(Color.NEGRAS);
@@ -77,27 +78,20 @@ public class Move extends HttpServlet {
                 tablero[7][7] = new Torre(Color.BLANCAS);
                         
                 int yCasilla = charToNum(casilla.charAt(0));
-                int xCasilla = casilla.charAt(1) - 1;
+                int xCasilla = Integer.parseInt(String.valueOf(casilla.charAt(1))) - 1;
                 
                 switch(request.getParameter("clave")) {
                     case "jugada":
-
-//                        if(esJugadaValida()) {
-//                            
-//                        } else {
-//                            
-//                        }
                         out.println(new Gson().toJson(tablero));
                         out.close();
                         break;
-                    case "alzarPieza":
-                        
+                    case "alzarPieza":   
                         Boolean[][] movValidos = partida.getTablero()[yCasilla][xCasilla].movimientosValidos(casilla, partida);
-                        System.out.print(yCasilla + " " + xCasilla);
                         out.println(new Gson().toJson(movValidos));
                         out.close();
                         break;
                 }
+                session.setAttribute("partida", partida);
 
 	}
 
@@ -123,10 +117,10 @@ public class Move extends HttpServlet {
                     out = 5;
                     break;
                 case 'G':
-                    out = 5;
+                    out = 6;
                     break;
                 case 'H':
-                    out = 6;
+                    out = 7;
                     break;  
             }
             return out;

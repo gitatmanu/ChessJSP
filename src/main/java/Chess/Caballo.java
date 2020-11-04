@@ -12,9 +12,9 @@ public class Caballo extends Pieza {
     @Override
     public Boolean[][] movimientosValidos(String pos, Partida partida) {
         Boolean[][] tablero = new Boolean[8][8];
-        
-        int posX = pos.charAt(1) - 1;
+
         int posY = Move.charToNum(pos.charAt(0));
+        int posX = Integer.parseInt(String.valueOf(pos.charAt(1))) - 1;
         
         // Todos los movimientos posibles si no hubiesen piezas
         List<int[]> movimientosAbsolutos = new ArrayList();
