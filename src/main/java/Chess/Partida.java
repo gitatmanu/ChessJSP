@@ -6,24 +6,22 @@ public class Partida {
 	private Pieza[][] tablero;
 	private ArrayList<Pieza> cementerio = new ArrayList<>();
 	private Turno turno = Turno.BLANCAS;
+        private int[] casillaAnterior;
+        
+	public Partida(Pieza[][] tablero) {this.tablero = tablero;}
 	
-	public Partida(Pieza[][] tablero) {
-		this.tablero = tablero;
-	}
-	
-	public Pieza[][] getTablero() {
-		return this.tablero;
-	}
+        public void setCasillaAnterior(int[] casilla) {this.casillaAnterior = casilla;}
+        
+	public Pieza[][] getTablero() {return this.tablero;}
 
-	public ArrayList<Pieza> getCementerio() {
-		return this.cementerio;
-	}
+	public int[] getCasillaAnterior() {return this.casillaAnterior;}
+        
+	public ArrayList<Pieza> getCementerio() {return this.cementerio;}
 
 	public static Pieza[][] tableroDefault() {
                 
 		Pieza[][] tablero = new Pieza[8][8]; // Inicializo tablero
 		
-
                 tablero[0][0] = new Torre(Color.NEGRAS);
                 tablero[0][1] = new Caballo(Color.NEGRAS);
                 tablero[0][2] = new Alfil(Color.NEGRAS);
@@ -65,31 +63,21 @@ public class Partida {
                 return tablero;
 	}
 
-	/*
-	public jugada(casillaOrigen, casillaDestino, turno, tablero) {
-		
-	}
-	*/
-	/*
-	public comprobarMovimientosValidos(casillaOrigen, Tablero) {
-		
-	}
-	*/
+	public boolean[][] movimientosValidos(int y, int x) {
+            boolean [][] tableroValidos = this.getTablero()[y][x].movimientosValidos(y, x, this);
+            return tableroValidos;
+        }
+        
+        public Pieza[][] hacerJugada(int y, int x, Partida partida) {
+            Pieza[][] tableroModificado = partida.getTablero().clone();
+            boolean[][] movimientosValidos = partida.getTablero()[casillaAnterior[0]][casillaAnterior[1]].movimientosValidos(y, x, partida);
+            
+            return tableroModificado;
+        }
 
-	public static Partida inicializaPartida() {
-		
-		return new Partida(tableroDefault());
-		
-	}
+	public static Partida inicializaPartida() {return new Partida(tableroDefault());}
 
-	public void matarPieza(Pieza jeje) {
-		this.getCementerio().add(jeje);
-	}
-
- 
-    public static void main (String[] args) {
-    }
-    
+	public void matarPieza(Pieza jeje) {this.getCementerio().add(jeje);}    
 }
 
 enum Turno {

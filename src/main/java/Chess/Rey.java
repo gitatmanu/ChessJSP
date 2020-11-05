@@ -7,7 +7,7 @@ public class Rey extends Pieza {
     }
 
     @Override
-    public Boolean[][] movimientosValidos(String pos, Partida partida) {
+    public boolean[][] movimientosValidos(int y, int x, Partida partida) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -23,6 +23,7 @@ function comprobarCasilla(casilla) {
 
         })
         .then(function(text) {
+            console.log(text);
             if(text[0][0] === true || text[0][0] === false) {
                 pintaCasillasValidas(text);
             } else if (text === "no valido") {

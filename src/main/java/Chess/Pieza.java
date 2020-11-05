@@ -13,7 +13,7 @@ public abstract class Pieza {
         public String getAscii(){return this.ascii;}
         
         public Color getColor() {return this.color;}
-
-	public abstract Boolean[][] movimientosValidos(String pos, Partida partida);
-
+        
+        public abstract boolean[][] movimientosValidos(int y, int x, Partida partida);
+        
 }

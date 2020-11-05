@@ -83,16 +83,15 @@ public class Move extends HttpServlet {
                 switch(request.getParameter("clave")) {
                     case "jugada":
                         out.println(new Gson().toJson(tablero));
-                        out.close();
                         break;
                     case "alzarPieza":   
-                        Boolean[][] movValidos = partida.getTablero()[yCasilla][xCasilla].movimientosValidos(casilla, partida);
+                        boolean[][] movValidos = partida.getTablero()[partida.getCasillaAnterior()[0]][partida.getCasillaAnterior()[1]].movimientosValidos(yCasilla, xCasilla, partida);
                         out.println(new Gson().toJson(movValidos));
-                        out.close();
                         break;
                 }
+                partida.setCasillaAnterior(new int[]{yCasilla, xCasilla});
                 session.setAttribute("partida", partida);
-
+                out.close();
 	}
 
         public static int charToNum(char c) {      
