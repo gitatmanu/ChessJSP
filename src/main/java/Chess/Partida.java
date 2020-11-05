@@ -62,17 +62,20 @@ public class Partida {
                 
                 return tablero;
 	}
-
-	public boolean[][] movimientosValidos(int y, int x) {
-            boolean [][] tableroValidos = this.getTablero()[y][x].movimientosValidos(y, x, this);
-            return tableroValidos;
-        }
         
-        public Pieza[][] hacerJugada(int y, int x, Partida partida) {
-            Pieza[][] tableroModificado = partida.getTablero().clone();
-            boolean[][] movimientosValidos = partida.getTablero()[casillaAnterior[0]][casillaAnterior[1]].movimientosValidos(y, x, partida);
+        public Pieza[][] hacerJugada(int y, int x) {
+            boolean[][] movimientosValidos = new boolean[8][8];
+            movimientosValidos = tablero[casillaAnterior[0]][casillaAnterior[1]].movimientosValidos(casillaAnterior[0], casillaAnterior[1], this);
             
-            return tableroModificado;
+            if(movimientosValidos[y][x] == true) {
+                
+                if(tablero[y][x] != null) {this.cementerio.add(tablero[y][x]);}
+                
+                tablero[y][x] = tablero[casillaAnterior[0]][casillaAnterior[1]];
+                tablero[casillaAnterior[0]][casillaAnterior[1]] = null;
+
+            }
+            return tablero;
         }
 
 	public static Partida inicializaPartida() {return new Partida(tableroDefault());}

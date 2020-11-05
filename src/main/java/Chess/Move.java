@@ -37,59 +37,21 @@ public class Move extends HttpServlet {
                 response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();    
                 String casilla = request.getParameter("casilla");
-
-                Pieza[][] tablero = new Pieza[8][8]; // Inicializo tablero
-
-                tablero[0][0] = new Torre(Color.NEGRAS);
-                tablero[0][1] = new Caballo(Color.NEGRAS);
-                tablero[0][2] = new Alfil(Color.NEGRAS);
-                tablero[0][3] = new Reina(Color.NEGRAS);
-                tablero[0][4] = new Rey(Color.NEGRAS);
-		tablero[0][5] = new Alfil(Color.NEGRAS);
-                tablero[0][6] = new Caballo(Color.NEGRAS);
-                tablero[0][7] = new Torre(Color.NEGRAS);
-                
-                tablero[1][0] = new Peon(Color.NEGRAS);
-                tablero[1][1] = new Peon(Color.NEGRAS);
-                tablero[1][2] = new Peon(Color.NEGRAS);
-                tablero[1][3] = new Peon(Color.NEGRAS);
-                tablero[1][4] = new Peon(Color.NEGRAS);
-                tablero[1][5] = new Peon(Color.NEGRAS);
-                tablero[1][6] = new Peon(Color.NEGRAS);
-                tablero[1][7] = new Peon(Color.NEGRAS);
-                
-                
-                tablero[6][0] = new Peon(Color.BLANCAS);
-                tablero[6][1] = new Peon(Color.BLANCAS);
-                tablero[6][2] = new Peon(Color.BLANCAS);
-                tablero[6][3] = new Peon(Color.BLANCAS);
-                tablero[6][4] = new Peon(Color.BLANCAS);
-                tablero[6][5] = new Peon(Color.BLANCAS);
-                tablero[6][6] = new Peon(Color.BLANCAS);
-                tablero[6][7] = new Peon(Color.BLANCAS);
-                
-                tablero[7][0] = new Torre(Color.BLANCAS);
-                tablero[5][0] = new Caballo(Color.BLANCAS);
-                tablero[7][2] = new Alfil(Color.BLANCAS);
-                tablero[7][3] = new Reina(Color.BLANCAS);
-                tablero[7][4] = new Rey(Color.BLANCAS);
-		tablero[7][5] = new Alfil(Color.BLANCAS);
-                tablero[7][6] = new Caballo(Color.BLANCAS);
-                tablero[7][7] = new Torre(Color.BLANCAS);
                         
-                int yCasilla = charToNum(casilla.charAt(0));
-                int xCasilla = Integer.parseInt(String.valueOf(casilla.charAt(1))) - 1;
+                int y = charToNum(casilla.charAt(0));
+                int x = Integer.parseInt(String.valueOf(casilla.charAt(1))) - 1;
                 
                 switch(request.getParameter("clave")) {
                     case "jugada":
-                        out.println(new Gson().toJson(tablero));
+                        Pieza[][] tableroModificado = partida.hacerJugada(y,x);
+                        out.println(new Gson().toJson(tableroModificado));
                         break;
                     case "alzarPieza":   
-                        boolean[][] movValidos = partida.getTablero()[partida.getCasillaAnterior()[0]][partida.getCasillaAnterior()[1]].movimientosValidos(yCasilla, xCasilla, partida);
+                        boolean[][] movValidos = partida.getTablero()[y][x].movimientosValidos(y,x,partida);
                         out.println(new Gson().toJson(movValidos));
                         break;
                 }
-                partida.setCasillaAnterior(new int[]{yCasilla, xCasilla});
+                partida.setCasillaAnterior(new int[]{y, x});
                 session.setAttribute("partida", partida);
                 out.close();
 	}

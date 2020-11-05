@@ -1,14 +1,11 @@
 var piezaAlzada = false;
 
 function comprobarCasilla(casilla) {
-        
-        
         const data = new FormData();        
         var clave = piezaAlzada !== true ? "alzarPieza" : "jugada";
     
         data.append("clave", clave);
         data.append("casilla", casilla);
-           
         
         fetch('Move', {
                 method: 'POST',
@@ -20,7 +17,6 @@ function comprobarCasilla(casilla) {
            } else {
                throw "Error en la llamada Ajax";
            }
-
         })
         .then(function(text) {
             console.log(text);
@@ -33,11 +29,9 @@ function comprobarCasilla(casilla) {
                 pintaTableroEstandar();
             } 
             piezaAlzada = piezaAlzada === true ? false : true;
-    })
+        })
         .catch(function(err) {
            console.log(err);
         });
-     
-       
 }
 

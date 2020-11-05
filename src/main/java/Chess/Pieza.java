@@ -15,5 +15,5 @@ public abstract class Pieza {
         public Color getColor() {return this.color;}
         
         public abstract boolean[][] movimientosValidos(int y, int x, Partida partida);
-        
+
 }

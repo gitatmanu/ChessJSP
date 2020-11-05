@@ -24,7 +24,7 @@ function pintaCasillasValidas(movimientosValidos) {
             if (movimientosValidos[i][j] === true) {
                 document.getElementById(casilla).style.boxShadow = "inset 0 0 0 4px #3BEB6C";
                 document.getElementById(casilla).style.transition = ".03s ease";
-                document.getElementById(casilla).style.animation = "tiembla 1s infinite";
+                document.getElementById(casilla).style.animation = "tiembla 0.5s infinite";
                 document.getElementById(casilla).style.backgroundColor = "#00942A";                            
             }
         }
