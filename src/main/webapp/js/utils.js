@@ -22,9 +22,7 @@ function comprobarCasilla(casilla) {
             console.log(text);
             if(text[0][0] === true || text[0][0] === false) {
                 pintaCasillasValidas(text);
-            } else if (text === "no valido") {
-                pintaTableroEstandar();
-            }else{
+            } else{
                 tableroModificado(text);
                 pintaTableroEstandar();
             } 

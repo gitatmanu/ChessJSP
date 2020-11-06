@@ -1,5 +1,9 @@
 package Chess;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class Rey extends Pieza {
     
     public Rey(Color color) {
@@ -8,8 +12,41 @@ public class Rey extends Pieza {
 
     @Override
     public boolean[][] movimientosValidos(int y, int x, Partida partida) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean[][] tablero = new boolean[8][8];
+        
+        // Todos los movimientos posibles si no hubiesen piezas
+        List<int[]> movimientosAbsolutos = new ArrayList();
+        movimientosAbsolutos.add(new int[]{y-1 , x});
+        movimientosAbsolutos.add(new int[]{y-1 , x+1});
+        movimientosAbsolutos.add(new int[]{y , x+1});
+        movimientosAbsolutos.add(new int[]{y+1 , x+1});
+        movimientosAbsolutos.add(new int[]{y+1 , x});
+        movimientosAbsolutos.add(new int[]{y+1 , x-1});
+        movimientosAbsolutos.add(new int[]{y , x-1});
+        movimientosAbsolutos.add(new int[]{y-1 , x-1});
+        
+        // Sustracción de movimientos no válidos
+        for(Iterator<int[]> iterator = movimientosAbsolutos.iterator(); iterator.hasNext(); ){
+            int[] movimiento = iterator.next();
+            
+            //Si está fuera del tablero
+            if(movimiento[0] > 7 || movimiento[0] < 0 || movimiento[1] > 7 || movimiento[1] < 0){
+                  iterator.remove();
+                  continue;
+            }
+           
+            if(partida.getTablero()[movimiento[0]][movimiento[1]] != null) {
+              // Si casilla destino tiene pieza del mismo color
+              if (partida.getTablero()[movimiento[0]][movimiento[1]].getColor() == this.getColor()){
+                  iterator.remove();
+                  continue;
+              }               
+            }
+        }
+        // Cambio a true de las posiciones restantes válidas
+        for(int[] mov:movimientosAbsolutos) {
+            tablero[mov[0]][mov[1]] = true;
+        }
+        return tablero;
     }
-    
-    
 }

@@ -18,7 +18,7 @@
     Partida partida = Partida.inicializaPartida();
     session.setAttribute("partida", partida);
     
-    String color = "white";
+    String color = "#decebe";
     String casilla = "";
     char fila = 'A';
     out.println("<main>");     
@@ -33,10 +33,10 @@
                 out.println("<span id='"+ "span"+ casilla + "'>" + partida.getTablero()[i][j].getAscii() + "</span>");
             }else {out.println("<span id='" + "span" + casilla + "'></span>");}
                 out.println("</div>");
-            color = color == "white" ? "brown   " : "white";
+            color = color == "#decebe" ? "#641c34" : "#decebe";
         }
         fila++;
-        color = color == "white" ? "brown" : "white";
+        color = color == "#decebe" ? "#641c34" : "#decebe";
         out.println("</div>");  
     }
     out.println("</div>");

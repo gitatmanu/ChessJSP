@@ -1,4 +1,4 @@
-body {background-color: gray; margin: 0;}
+body {background-color: #828282; margin: 0;}
 
 
  main {
@@ -27,10 +27,6 @@ body {background-color: gray; margin: 0;}
          font-size:3.5em;         
  }
 
-/* .casilla:hover {
-     box-shadow: inset 0 0 0 4px #3BEB6C;
-     transition: .05s ease;
- }*/
  
  * {
     -webkit-touch-callout:none;
@@ -48,9 +44,3 @@ body {background-color: gray; margin: 0;}
          align-items: center;
          margin: 0 auto; 
  }
- 
-@-webkit-keyframes tiembla{
-  0%  { -webkit-transform:rotateZ(-5deg); }
-  50% { -webkit-transform:rotateZ( 0deg) scale(.8); }
-  100%{ -webkit-transform:rotateZ( 5deg); }
-}

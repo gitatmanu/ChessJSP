@@ -24,7 +24,6 @@ function pintaCasillasValidas(movimientosValidos) {
             if (movimientosValidos[i][j] === true) {
                 document.getElementById(casilla).style.boxShadow = "inset 0 0 0 4px #3BEB6C";
                 document.getElementById(casilla).style.transition = ".03s ease";
-                document.getElementById(casilla).style.animation = "tiembla 0.5s infinite";
                 document.getElementById(casilla).style.backgroundColor = "#00942A";                            
             }
         }
@@ -33,7 +32,7 @@ function pintaCasillasValidas(movimientosValidos) {
 }
 
 function pintaTableroEstandar() {
-    var color = "white";
+    var color = "#decebe";
     var casilla = "";
     var fila = 'A';
 
@@ -42,11 +41,10 @@ function pintaTableroEstandar() {
             casilla = fila + (j+1);
             document.getElementById(casilla).style.backgroundColor = color;
             document.getElementById(casilla).style.boxShadow = "none";
-            document.getElementById(casilla).style.animation = "none";
-            color = (color === "white") ? "brown" : "white";
+            color = (color === "#decebe") ? "#641c34" : "#decebe";
         }
         fila = nextChar(fila);
-        color = (color === "white") ? "brown" : "white";
+        color = (color === "#decebe") ? "#641c34" : "#decebe";
     }
 }
 
