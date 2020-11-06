@@ -77,7 +77,7 @@ public class Partida {
             }
             return tablero;
         }
-
+        
 	public static Partida inicializaPartida() {return new Partida(tableroDefault());}
 
 	public void matarPieza(Pieza jeje) {this.getCementerio().add(jeje);}    

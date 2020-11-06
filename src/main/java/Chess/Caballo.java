@@ -42,7 +42,7 @@ public class Caballo extends Pieza {
                   continue;
               }               
             }
-        }
+        } 
         // Cambio a true de las posiciones restantes válidas
         for(int[] mov:movimientosAbsolutos) {
             tablero[mov[0]][mov[1]] = true;
