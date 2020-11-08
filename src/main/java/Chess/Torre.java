@@ -14,15 +14,13 @@ public class Torre extends Pieza {
         boolean[][] tablero = new boolean[8][8];        
         List<int[]> movimientosAbsolutos = new ArrayList();
    
-        Pieza.iterar(y, x, y - 1, x, movimientosAbsolutos, partida);
-        Pieza.iterar(y, x, y + 1, x, movimientosAbsolutos, partida);
-        Pieza.iterar(y, x, y, x - 1, movimientosAbsolutos, partida);
-        Pieza.iterar(y, x, y, x + 1, movimientosAbsolutos, partida);
+        Pieza.iterarLado(y, x, y - 1, x, movimientosAbsolutos, partida);
+        Pieza.iterarLado(y, x, y + 1, x, movimientosAbsolutos, partida);
+        Pieza.iterarLado(y, x, y, x - 1, movimientosAbsolutos, partida);
+        Pieza.iterarLado(y, x, y, x + 1, movimientosAbsolutos, partida);
         
-        // Cambio a true de las posiciones restantes válidas
-        for(int[] mov:movimientosAbsolutos) {
-            tablero[mov[0]][mov[1]] = true;
-        }
+        Pieza.insertarValidos(tablero, movimientosAbsolutos);
+
         return tablero;
     }
 }

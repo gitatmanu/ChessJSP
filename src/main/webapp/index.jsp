@@ -22,7 +22,6 @@
     String casilla = "";
     char fila = 'A';
     out.println("<main>");     
-    out.println("<div id ='recuadro'>");     
     out.println("<div id='tablero'>");
     for (int i = 0; i <= 7; i++) {
         out.println("<div class='fila'>");
@@ -40,9 +39,7 @@
         out.println("</div>");  
     }
     out.println("</div>");
-    out.println("</div>");
-    out.println("</main>");
-        
+    out.println("</main>");   
 %>
 
 </body>
