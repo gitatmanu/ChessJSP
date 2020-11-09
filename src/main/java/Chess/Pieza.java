@@ -47,7 +47,6 @@ public abstract class Pieza {
                     if(partida.getTablero()[yDiferente][x]
                             != null
                             && partida.getTablero()[yDiferente][x].getColor() != partida.getTablero()[y][x].getColor()) {
-                        movimientosAbsolutos.add(new int[]{yDiferente, x});
                         break;           
                     }
                     if(partida.getTablero()[yDiferente][x] == null) {
