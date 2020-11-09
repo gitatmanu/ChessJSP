@@ -20,18 +20,49 @@ public abstract class Pieza {
         
         public abstract boolean[][] movimientosValidos(int y, int x, Partida partida);
         
-        public static void iterarPeonBlancas(int y, int x, List<int[]> movimientosAbsolutos, Partida partida) {
+        public static void iterarPeon(int y, int x, Color color, List<int[]> movimientosAbsolutos, Partida partida) {
 
+            int yDiferente = color == Color.BLANCAS ? y - 1 : y + 1;
+            int filaDeSalida = color == Color.BLANCAS ? 6 : 1;
+                        
             //Si a la izquierda o derecha no es null y color diferente
-            if(y - 1 <= 7 && y - 1 >= 0) {
-
-                if ( x - 1 <= 7 && x - 1 >= 0 && partida.getTablero()[y - 1][x - 1] != null && partida.getTablero()[y - 1][x - 1].getColor() != partida.getTablero()[y][x].getColor()) {
-                    movimientosAbsolutos.add(new int[]{y - 1, x - 1});
+            if(yDiferente <= 7 && yDiferente >= 0) {
+                if ( x - 1 <= 7 && x - 1 >= 0 && partida.getTablero()[yDiferente][x - 1] != null && partida.getTablero()[yDiferente][x - 1].getColor() != partida.getTablero()[y][x].getColor()) {
+                    movimientosAbsolutos.add(new int[]{yDiferente, x - 1});
                 }
-
-                if (x + 1 <= 7 && x + 1 >= 0 && partida.getTablero()[y - 1][x + 1] != null && partida.getTablero()[y - 1][x + 1].getColor() != partida.getTablero()[y][x].getColor()) {
-                    movimientosAbsolutos.add(new int[]{y - 1, x + 1});
+                if (x + 1 <= 7 && x + 1 >= 0 && partida.getTablero()[yDiferente][x + 1] != null && partida.getTablero()[yDiferente][x + 1].getColor() != partida.getTablero()[y][x].getColor()) {
+                    movimientosAbsolutos.add(new int[]{yDiferente, x + 1});
                 }
+            }
+            
+            // Si está en filasalida o no
+            if (filaDeSalida == y) {
+                while(yDiferente != y - 3 && yDiferente != y + 3) {
+                    if(yDiferente < 0 || yDiferente > 7) {
+                        break;
+                    }
+                    if(partida.getTablero()[yDiferente][x] != null && partida.getTablero()[yDiferente][x].getColor() == partida.getTablero()[y][x].getColor()) {
+                       break; 
+                    }
+                    if(partida.getTablero()[yDiferente][x]
+                            != null
+                            && partida.getTablero()[yDiferente][x].getColor() != partida.getTablero()[y][x].getColor()) {
+                        movimientosAbsolutos.add(new int[]{yDiferente, x});
+                        break;           
+                    }
+                    if(partida.getTablero()[yDiferente][x] == null) {
+                        movimientosAbsolutos.add(new int[]{yDiferente, x});
+                    }
+                    if(yDiferente < y) {
+                        yDiferente--;
+                    } else if (yDiferente > y) {
+                        yDiferente++;
+                    } 
+                }
+            } else {
+                if (yDiferente <= 7 && yDiferente >= 0 && x <= 7 && x >= 0 && partida.getTablero()[yDiferente][x] == null) {
+                    movimientosAbsolutos.add(new int[]{yDiferente, x});
+                }                
             }
         }
         
@@ -81,7 +112,6 @@ public abstract class Pieza {
                     movimientosAbsolutos.add(new int[]{yDiferente, xDiferente});
                 }
                
-                
                 if(yDiferente < y) {
                     yDiferente--;
                 } else if (yDiferente > y) {

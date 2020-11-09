@@ -14,7 +14,7 @@ public class Peon extends Pieza {
         boolean[][] tablero = new boolean[8][8];
         List<int[]> movimientosAbsolutos = new ArrayList();
 
-        Pieza.iterarPeonBlancas(y, x, movimientosAbsolutos, partida);
+        Pieza.iterarPeon(y, x, partida.getTablero()[y][x].getColor(), movimientosAbsolutos, partida);
         
         Pieza.insertarValidos(tablero, movimientosAbsolutos);
         
