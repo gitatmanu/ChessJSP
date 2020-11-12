@@ -8,7 +8,12 @@ public class Reina extends Pieza {
     public Reina(Color color) {
         super(color, color == Color.BLANCAS ? "&#9813;": "&#9819;");
     }
-
+    
+    @Override
+    public boolean puedeAscender(int y, int x, Partida partida) {
+        return false;
+    }
+    
     @Override
     public boolean[][] movimientosValidos(int y, int x, Partida partida) {
         boolean[][] tablero

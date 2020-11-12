@@ -63,6 +63,10 @@ public class Partida {
                 return tablero;
 	}
         
+        public boolean comprobarAcenso(int y , int x) {
+            return this.getTablero()[y][x].puedeAscender(y, x, this);
+        }
+        
         public Pieza[][] hacerJugada(int y, int x) {
             boolean[][] movimientosValidos = new boolean[8][8];
             movimientosValidos = tablero[casillaAnterior[0]][casillaAnterior[1]].movimientosValidos(casillaAnterior[0], casillaAnterior[1], this);

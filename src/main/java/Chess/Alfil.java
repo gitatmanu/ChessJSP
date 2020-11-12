@@ -1,5 +1,6 @@
 package Chess;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,11 @@ public class Alfil extends Pieza {
     
     public Alfil(Color color) {
         super(color, color == Color.BLANCAS ? "&#9815;": "&#9821;");
+    }
+    
+    @Override
+    public boolean puedeAscender(int y, int x, Partida partida) {
+        return false;
     }
 
     @Override

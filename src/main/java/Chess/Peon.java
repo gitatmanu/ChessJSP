@@ -10,6 +10,11 @@ public class Peon extends Pieza {
     }
     
     @Override
+    public boolean puedeAscender(int y, int x, Partida partida) {
+        return y == 0 || y == 7;
+    }
+    
+    @Override
     public boolean[][] movimientosValidos(int y, int x, Partida partida) {
         boolean[][] tablero = new boolean[8][8];
         List<int[]> movimientosAbsolutos = new ArrayList();

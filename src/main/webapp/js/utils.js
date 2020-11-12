@@ -1,4 +1,5 @@
 var piezaAlzada = false;
+var ascenso = false;
 
 function comprobarCasilla(casilla) {
         const data = new FormData();        
@@ -22,14 +23,16 @@ function comprobarCasilla(casilla) {
             console.log(text);
             if(text[0][0] === true || text[0][0] === false) {
                 pintaCasillasValidas(text);
-            } else{
+            } else if(text[0] === "ascenso") {
+                
+            }else{
                 tableroModificado(text);
                 pintaTableroEstandar();
             } 
             piezaAlzada = piezaAlzada === true ? false : true;
+            $('#ascensoModal').modal('show');
         })
         .catch(function(err) {
            console.log(err);
         });
 }
-
