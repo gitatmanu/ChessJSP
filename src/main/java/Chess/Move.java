@@ -40,11 +40,10 @@ public class Move extends HttpServlet {
                     case "jugada":
                         Pieza[][] tableroModificado = partida.hacerJugada(y,x);
                         
-                        if (partida.comprobarAcenso(y, x)) {
-                            
-                            out.println(new Gson().toJson(tableroModificado));
-                        }
                         out.println(new Gson().toJson(tableroModificado));
+                        if (partida.comprobarAcenso(y, x)) {    
+                            out.println(new Gson().toJson("ascenso"));
+                        }
                         break;
                     case "alzarPieza":   
                         boolean[][] movValidos = partida.getTablero()[y][x].movimientosValidos(y,x,partida);

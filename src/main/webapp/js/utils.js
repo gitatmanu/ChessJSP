@@ -23,14 +23,13 @@ function comprobarCasilla(casilla) {
             console.log(text);
             if(text[0][0] === true || text[0][0] === false) {
                 pintaCasillasValidas(text);
-            } else if(text[0] === "ascenso") {
-                
+            } else if(text === "ascenso") {
+                $('#ascensoModal').modal('show');
             }else{
                 tableroModificado(text);
                 pintaTableroEstandar();
             } 
             piezaAlzada = piezaAlzada === true ? false : true;
-            $('#ascensoModal').modal('show');
         })
         .catch(function(err) {
            console.log(err);

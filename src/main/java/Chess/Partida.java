@@ -64,7 +64,7 @@ public class Partida {
 	}
         
         public boolean comprobarAcenso(int y , int x) {
-            return this.getTablero()[y][x].puedeAscender(y, x, this);
+            return tablero[y][x].puedeAscender(y, x, this);
         }
         
         public Pieza[][] hacerJugada(int y, int x) {
@@ -72,8 +72,7 @@ public class Partida {
             movimientosValidos = tablero[casillaAnterior[0]][casillaAnterior[1]].movimientosValidos(casillaAnterior[0], casillaAnterior[1], this);
             
             if(movimientosValidos[y][x] == true) {
-                
-                if(tablero[y][x] != null) {this.cementerio.add(tablero[y][x]);}
+                if(tablero[y][x] != null) {piezaACementerio(tablero[y][x]);}
                 
                 tablero[y][x] = tablero[casillaAnterior[0]][casillaAnterior[1]];
                 tablero[casillaAnterior[0]][casillaAnterior[1]] = null;
@@ -84,7 +83,7 @@ public class Partida {
         
 	public static Partida inicializaPartida() {return new Partida(tableroDefault());}
 
-	public void matarPieza(Pieza jeje) {this.getCementerio().add(jeje);}    
+	public void piezaACementerio(Pieza piezaMuerta) {cementerio.add(piezaMuerta);}    
 }
 
 enum Turno {
