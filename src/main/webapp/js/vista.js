@@ -2,8 +2,8 @@ function tableroModificado(tablero) {
     var casilla = "";
     var fila = 'A';
 
-    for (i = 0; i <= 7; i++) {
-        for (j = 0; j <= 7; j++) {
+    for (var i = 0; i <= 7; i++) {
+        for (var j = 0; j <= 7; j++) {
             casilla = fila + (j+1);
             if (tablero[i][j] !== null) {
                 document.getElementById("span" + casilla).innerHTML = tablero[i][j]["ascii"];
@@ -18,8 +18,8 @@ function tableroModificado(tablero) {
 function pintaCasillasValidas(movimientosValidos) {
     var fila = 'A';
 
-    for (i = 0; i <= 7; i++) {
-        for (j = 0; j <= 7; j++) {
+    for (var i = 0; i <= 7; i++) {
+        for (var j = 0; j <= 7; j++) {
             casilla = fila + (j+1);
             if (movimientosValidos[i][j] === true) {
                 document.getElementById(casilla).style.boxShadow = "inset 0 0 0 4px #3BEB6C";
@@ -36,8 +36,8 @@ function pintaTableroEstandar() {
     var casilla = "";
     var fila = 'A';
 
-    for (i = 0; i <= 7; i++) {
-        for (j = 0; j <= 7; j++) {
+    for (var i = 0; i <= 7; i++) {
+        for (var j = 0; j <= 7; j++) {
             casilla = fila + (j+1);
             document.getElementById(casilla).style.backgroundColor = color;
             document.getElementById(casilla).style.boxShadow = "none";

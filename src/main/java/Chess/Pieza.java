@@ -1,6 +1,5 @@
 package Chess;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,7 +22,6 @@ public abstract class Pieza {
         public abstract boolean puedeAscender(int y, int x, Partida partida);
         
         public static void iterarPeon(int y, int x, Color color, List<int[]> movimientosAbsolutos, Partida partida) {
-
             int yDiferente = color == Color.BLANCAS ? y - 1 : y + 1;
             int filaDeSalida = color == Color.BLANCAS ? 6 : 1;
                         
@@ -91,8 +89,7 @@ public abstract class Pieza {
             }
         }
         
-        public static void iterarLado(int y, int x, int yDiferente, int xDiferente, List<int[]> movimientosAbsolutos, Partida partida) { 
-            
+        public static void iterarLado(int y, int x, int yDiferente, int xDiferente, List<int[]> movimientosAbsolutos, Partida partida) {
             while(true) {
                 if(yDiferente < 0 || yDiferente > 7 || xDiferente < 0 || xDiferente > 7) {
                     break;
