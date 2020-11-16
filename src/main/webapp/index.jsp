@@ -51,10 +51,10 @@
         </div>
         
         <div class="ascensoModal">
-            <div>&#9813;</div>
-            <div>&#9814;</div>
-            <div>&#9815;</div>
-            <div>&#9816;</div>
+            <div onclick="ascenso('Reina')">&#9813;</div>
+            <div onclick="ascenso('Torre')">&#9814;</div>
+            <div onclick="ascenso('Alfil')">&#9815;</div>
+            <div onclick="ascenso('Caballo')">&#9816;</div>
         </div>
     </div>
   </div>

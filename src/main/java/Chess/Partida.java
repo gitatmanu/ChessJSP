@@ -18,7 +18,9 @@ public class Partida {
         
 	public ArrayList<Pieza> getCementerio() {return this.cementerio;}
 
-	public static Pieza[][] tableroDefault() {
+	public static Partida inicializaPartida() {return new Partida(tableroDefault());}
+	
+        public static Pieza[][] tableroDefault() {
                 
 		Pieza[][] tablero = new Pieza[8][8]; // Inicializo tablero
 		
@@ -64,7 +66,7 @@ public class Partida {
 	}
         
         public boolean comprobarAcenso(int y , int x) {
-            return tablero[y][x].puedeAscender(y, x, this);
+            return this.tablero[y][x].puedeAscender(y, x, this);
         }
         
         public Pieza[][] hacerJugada(int y, int x) {
@@ -72,7 +74,8 @@ public class Partida {
             movimientosValidos = tablero[casillaAnterior[0]][casillaAnterior[1]].movimientosValidos(casillaAnterior[0], casillaAnterior[1], this);
             
             if(movimientosValidos[y][x] == true) {
-                if(tablero[y][x] != null) {piezaACementerio(tablero[y][x]);}
+                if(tablero[y][x] != null) {piezaACementerio(tablero[y][x]);
+            }
                 
                 tablero[y][x] = tablero[casillaAnterior[0]][casillaAnterior[1]];
                 tablero[casillaAnterior[0]][casillaAnterior[1]] = null;
@@ -81,8 +84,31 @@ public class Partida {
             return tablero;
         }
         
-	public static Partida inicializaPartida() {return new Partida(tableroDefault());}
-
+        public Pieza[][] ascenderPieza(String piezaElegida) {
+            Pieza pieza = null;
+            switch(piezaElegida) {
+                case "Reina":
+                    pieza = new Reina(this.tablero[casillaAnterior[0]][casillaAnterior[1]].getColor());
+                    break;
+                    
+                case "Caballo":
+                    pieza = new Caballo(this.tablero[casillaAnterior[0]][casillaAnterior[1]].getColor());
+                    break;
+                
+                case "Alfil":
+                    pieza = new Alfil(this.tablero[casillaAnterior[0]][casillaAnterior[1]].getColor());
+                    break;
+                    
+                case "Torre":
+                    pieza = new Torre(this.tablero[casillaAnterior[0]][casillaAnterior[1]].getColor());
+                    break;      
+            }
+            
+            this.tablero[casillaAnterior[0]][casillaAnterior[1]] = pieza;
+            
+            return this.tablero;
+        }
+        
 	public void piezaACementerio(Pieza piezaMuerta) {cementerio.add(piezaMuerta);}    
 }
 
