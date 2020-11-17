@@ -39,7 +39,7 @@ function jugada(casilla) {
         data.append("clave", "jugada");
         data.append("casilla", casilla);
         
-        fetch('Control', {
+        fetch('Moves', {
                 method: 'POST',
                 body: data
         })
@@ -67,7 +67,7 @@ function alzarPieza(casilla) {
         data.append("clave", "alzarPieza");
         data.append("casilla", casilla);
         
-        fetch('Control', {
+        fetch('Moves', {
                 method: 'POST',
                 body: data
         })

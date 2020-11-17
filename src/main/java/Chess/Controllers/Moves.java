@@ -17,10 +17,10 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/Control")
 @MultipartConfig
-public class Control extends HttpServlet {
+public class Moves extends HttpServlet {
 	private static final long serialVersionUID = 1L;     
 
-    public Control() {
+    public Moves() {
         super();
     }
     
