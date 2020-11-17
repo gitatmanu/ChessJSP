@@ -1,4 +1,7 @@
-package Chess;
+package Chess.Controllers;
+import Chess.Partida;
+import Chess.Pieza;
+import Chess.Utils;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -47,17 +50,11 @@ public class Control extends HttpServlet {
 
                 send.put("movimientosValidos", movimientosValidos);
                 break;
-            case "ascenso":
-                String piezaElegida = request.getParameter("piezaElegida");
-                Pieza[][] tablero = partida.ascenderPieza(piezaElegida);
-                
-                send.put("ascenso", tablero);
-                break;
         }
 
         partida.setCasillaAnterior(new int[]{y, x});
         session.setAttribute("partida", partida);
         out.print(new Gson().toJson(send));
         out.close();
-    }
+    }	   
 }

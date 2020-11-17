@@ -1,8 +1,8 @@
 var piezaAlzada = false;
-var ascenso = false;
+var esAscenso = false;
 
 function comprobarCasilla(casilla) {
-    if(ascenso) {
+    if(esAscenso) {
         $('#ascensoModal').modal('show');
     } else {
         piezaAlzada ? jugada(casilla) : alzarPieza(casilla);
@@ -14,8 +14,7 @@ function ascenso(piezaElegida) {
         const data = new FormData();
         data.append("clave", "ascenso");
         data.append("piezaElegida", piezaElegida);
-        
-        fetch('Control', {
+        fetch('Ascenso', {
                 method: 'POST',
                 body: data
         })
@@ -28,7 +27,7 @@ function ascenso(piezaElegida) {
         })
         .then(function(text) {
             tableroModificado(text['ascenso']);
-            ascenso = false;
+            esAscenso = false;
         })
         .catch(function(err) {
            console.log(err);
@@ -55,7 +54,7 @@ function jugada(casilla) {
             tableroModificado(text['tableroModificado']);
             pintaTableroEstandar();
             if (text['ascenso'] == true) {
-                ascenso = true;
+                esAscenso = true;
             }
         })
         .catch(function(err) {

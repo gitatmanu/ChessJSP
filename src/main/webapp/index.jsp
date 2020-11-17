@@ -9,10 +9,10 @@
 <meta charset="UTF-8">
 <title>Ajedrez DUAL</title>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 <script src="/js/utils.js"></script>
 <script src="/js/functions.js"></script>
 <script src="/js/vista.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 <link href="/css/style.css" rel="stylesheet" />
 </head>
 <body>
@@ -51,10 +51,10 @@
         </div>
         
         <div class="ascensoModal">
-            <div onclick="ascenso('Reina')">&#9813;</div>
-            <div onclick="ascenso('Torre')">&#9814;</div>
-            <div onclick="ascenso('Alfil')">&#9815;</div>
-            <div onclick="ascenso('Caballo')">&#9816;</div>
+            <div onclick='ascenso("Reina")'>&#9813;</div>
+            <div onclick='ascenso("Torre")'>&#9814;</div>
+            <div onclick='ascenso("Alfil")'>&#9815;</div>
+            <div onclick='ascenso("Caballo")'>&#9816;</div>
         </div>
     </div>
   </div>
