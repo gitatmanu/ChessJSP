@@ -15,12 +15,12 @@ import com.google.gson.Gson;
 import java.util.HashMap;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/Control")
+@WebServlet("/alzarPieza")
 @MultipartConfig
-public class Moves extends HttpServlet {
+public class alzarPieza extends HttpServlet {
 	private static final long serialVersionUID = 1L;     
 
-    public Moves() {
+    public alzarPieza() {
         super();
     }
     
@@ -38,23 +38,13 @@ public class Moves extends HttpServlet {
         int y = Utils.charToNum(casilla.charAt(0));
         int x = Integer.parseInt(String.valueOf(casilla.charAt(1))) - 1;
 
-        switch(request.getParameter("clave")) {
-            case "jugada":
-                Pieza[][] tableroModificado = partida.hacerJugada(y,x);
-
-                send.put("tableroModificado", tableroModificado);
-                send.put("ascenso", partida.comprobarAcenso(y, x));
-                break;
-            case "alzarPieza":   
-                boolean[][] movimientosValidos = partida.getTablero()[y][x].movimientosValidos(y,x,partida);
-
-                send.put("movimientosValidos", movimientosValidos);
-                break;
-        }
-
-        partida.setCasillaAnterior(new int[]{y, x});
-        session.setAttribute("partida", partida);
-        out.print(new Gson().toJson(send));
-        out.close();
-    }	   
-}
+	if(partida.getTurno() == partida.getTablero()[y][x].getColor()) {
+		boolean[][] movimientosValidos = partida.getTablero()[y][x].movimientosValidos(y,x,partida);
+		send.put("movimientosValidos", movimientosValidos);
+		partida.setCasillaAnterior(new int[]{y, x});
+		session.setAttribute("partida", partida);
+		out.print(new Gson().toJson(send));
+	}
+        out.close();	
+	}
+}	   

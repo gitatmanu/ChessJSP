@@ -32,7 +32,7 @@ function pintaCasillasValidas(movimientosValidos) {
 }
 
 function pintaTableroEstandar() {
-    var color = "#decebe";
+    var color = "#e3d3db";
     var casilla = "";
     var fila = 'A';
 
@@ -41,10 +41,10 @@ function pintaTableroEstandar() {
             casilla = fila + (j+1);
             document.getElementById(casilla).style.backgroundColor = color;
             document.getElementById(casilla).style.boxShadow = "none";
-            color = (color === "#decebe") ? "#641c34" : "#decebe";
+            color = (color === "#e3d3db") ? "#34232c" : "#e3d3db";
         }
         fila = nextChar(fila);
-        color = (color === "#decebe") ? "#641c34" : "#decebe";
+        color = (color === "#e3d3db") ? "#34232c" : "#e3d3db";
     }
 }
 

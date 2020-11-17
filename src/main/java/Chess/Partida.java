@@ -2,12 +2,25 @@ package Chess;
 import java.util.ArrayList;
 
 public class Partida {
+
+	public boolean esJugadaValida(int y, int x) {
+		boolean[][] movimientosValidos = new boolean[8][8];
+		movimientosValidos = tablero[casillaAnterior[0]][casillaAnterior[1]].movimientosValidos(casillaAnterior[0], casillaAnterior[1], this);
+		
+		return movimientosValidos[y][x] == true;
+	}
     
 	private Pieza[][] tablero;
 	private ArrayList<Pieza> cementerio = new ArrayList<>();
-	private Turno turno = Turno.BLANCAS;
+	private Color turno = Color.BLANCAS;
         private int[] casillaAnterior;
         
+	public Color getTurno() {return this.turno;}
+	
+	public void cambiarTurno() {
+		this.turno = this.turno == Color.BLANCAS ? Color.NEGRAS : Color.BLANCAS;
+	}
+	
 	public Partida(Pieza[][] tablero) {this.tablero = tablero;}
 	
         public void setCasillaAnterior(int[] casilla) {this.casillaAnterior = casilla;}
@@ -110,8 +123,4 @@ public class Partida {
         }
         
 	public void piezaACementerio(Pieza piezaMuerta) {cementerio.add(piezaMuerta);}    
-}
-
-enum Turno {
-	BLANCAS, NEGRAS;
 }

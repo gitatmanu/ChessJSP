@@ -15,15 +15,15 @@ import com.google.gson.Gson;
 import java.util.HashMap;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/Ascenso")
+@WebServlet("/jugada")
 @MultipartConfig
-public class Ascenso extends HttpServlet {
+public class jugada extends HttpServlet {
 	private static final long serialVersionUID = 1L;     
 
-    public Ascenso() {
+    public jugada() {
         super();
     }
-   
+    
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         Partida partida = (Partida) session.getAttribute("partida");
@@ -32,15 +32,27 @@ public class Ascenso extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-	String piezaElegida = request.getParameter("piezaElegida");
+        String casilla = request.getParameter("casilla");
         HashMap send = new HashMap();
+        int y = Utils.charToNum(casilla.charAt(0));
+        int x = Integer.parseInt(String.valueOf(casilla.charAt(1))) - 1;
 
-	Pieza[][] tablero = partida.ascenderPieza(piezaElegida);
-	send.put("ascenso", tablero);
+	
+	if (partida.esJugadaValida(y, x)) {
+		Pieza[][] tableroModificado = partida.hacerJugada(y,x);
 
-        session.setAttribute("partida", partida);
-        out.print(new Gson().toJson(send));
+		send.put("tableroModificado", tableroModificado);
+		send.put("ascenso", partida.comprobarAcenso(y, x));
+		send.put("estado", "válido");
+
+		partida.cambiarTurno();
+		partida.setCasillaAnterior(new int[]{y, x});
+		session.setAttribute("partida", partida);
+		out.print(new Gson().toJson(send));		
+	} else  {
+		send.put("estado", "no válido");
+	}
+	
         out.close();
-    }
-    
+    }	   
 }

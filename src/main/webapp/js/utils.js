@@ -1,12 +1,12 @@
-var piezaAlzada = false;
+var piezaAlzada = true;
 var esAscenso = false;
 
 function comprobarCasilla(casilla) {
     if(esAscenso) {
         $('#ascensoModal').modal('show');
     } else {
-        piezaAlzada ? jugada(casilla) : alzarPieza(casilla);
         piezaAlzada = !piezaAlzada;
+        piezaAlzada ? jugada(casilla) : alzarPieza(casilla);
     }
 }
 
@@ -14,7 +14,7 @@ function ascenso(piezaElegida) {
         const data = new FormData();
         data.append("clave", "ascenso");
         data.append("piezaElegida", piezaElegida);
-        fetch('Ascenso', {
+        fetch('ascenso', {
                 method: 'POST',
                 body: data
         })
@@ -28,6 +28,7 @@ function ascenso(piezaElegida) {
         .then(function(text) {
             tableroModificado(text['ascenso']);
             esAscenso = false;
+            $('#ascensoModal').modal('hide');
         })
         .catch(function(err) {
            console.log(err);
@@ -39,7 +40,7 @@ function jugada(casilla) {
         data.append("clave", "jugada");
         data.append("casilla", casilla);
         
-        fetch('Moves', {
+        fetch('jugada', {
                 method: 'POST',
                 body: data
         })
@@ -51,10 +52,17 @@ function jugada(casilla) {
            }
         })
         .then(function(text) {
-            tableroModificado(text['tableroModificado']);
-            pintaTableroEstandar();
-            if (text['ascenso'] == true) {
-                esAscenso = true;
+            console.log(text);
+            if(text['estado'] == "no válido") {
+                console.log("entra");
+                pintaTableroEstandar();
+            } else {
+                tableroModificado(text['tableroModificado']);
+                pintaTableroEstandar();
+                if (text['ascenso'] == true) {
+                    esAscenso = true;
+                    $('#ascensoModal').modal('show');
+                }                
             }
         })
         .catch(function(err) {
@@ -67,7 +75,7 @@ function alzarPieza(casilla) {
         data.append("clave", "alzarPieza");
         data.append("casilla", casilla);
         
-        fetch('Moves', {
+        fetch('alzarPieza', {
                 method: 'POST',
                 body: data
         })

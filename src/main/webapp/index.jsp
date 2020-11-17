@@ -20,7 +20,7 @@
     Partida partida = Partida.inicializaPartida();
     session.setAttribute("partida", partida);
     
-    String color = "#decebe";
+    String color = "#e3d3db";
     String casilla = "";
     char fila = 'A';
     out.println("<main>");     
@@ -34,10 +34,10 @@
                 out.println("<span id='"+ "span"+ casilla + "'>" + partida.getTablero()[i][j].getAscii() + "</span>");
             }else {out.println("<span id='" + "span" + casilla + "'></span>");}
                 out.println("</div>");
-            color = color == "#decebe" ? "#641c34" : "#decebe";
+            color = color == "#e3d3db" ? "#34232c" : "#e3d3db";
         }
         fila++;
-        color = color == "#decebe" ? "#641c34" : "#decebe";
+        color = color == "#e3d3db" ? "#34232c" : "#e3d3db";
         out.println("</div>");  
     }
     out.println("</div>");
@@ -46,15 +46,12 @@
 <!-- Modal -->
 <div class="modal fade" id="ascensoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-        </div>
-        
+    <div style="background-color: #dcdcdc;" class="modal-content">        
         <div class="ascensoModal">
-            <div onclick='ascenso("Reina")'>&#9813;</div>
-            <div onclick='ascenso("Torre")'>&#9814;</div>
-            <div onclick='ascenso("Alfil")'>&#9815;</div>
-            <div onclick='ascenso("Caballo")'>&#9816;</div>
+            <div style="color: red;" onclick='ascenso("Reina")'>&#9813;</div>
+            <div style="color: orange;" onclick='ascenso("Torre")'>&#9814;</div>
+            <div style="color: yellow;" onclick='ascenso("Alfil")'>&#9815;</div>
+            <div style="color: green;" onclick='ascenso("Caballo")'>&#9816;</div>
         </div>
     </div>
   </div>
