@@ -41,10 +41,10 @@ public class alzarPieza extends HttpServlet {
 	if(partida.getTurno() == partida.getTablero()[y][x].getColor()) {
 		boolean[][] movimientosValidos = partida.getTablero()[y][x].movimientosValidos(y,x,partida);
 		send.put("movimientosValidos", movimientosValidos);
-		partida.setCasillaAnterior(new int[]{y, x});
-		session.setAttribute("partida", partida);
 		out.print(new Gson().toJson(send));
+		partida.setCasillaAnterior(new int[]{y, x});
 	}
+	session.setAttribute("partida", partida);
         out.close();	
 	}
 }	   

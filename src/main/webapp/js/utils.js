@@ -1,11 +1,10 @@
-var piezaAlzada = true;
+var piezaAlzada = false;
 var esAscenso = false;
 
-function comprobarCasilla(casilla) {
+function comprobarCasilla(casilla) {        
     if(esAscenso) {
         $('#ascensoModal').modal('show');
     } else {
-        piezaAlzada = !piezaAlzada;
         piezaAlzada ? jugada(casilla) : alzarPieza(casilla);
     }
 }
@@ -52,9 +51,7 @@ function jugada(casilla) {
            }
         })
         .then(function(text) {
-            console.log(text);
-            if(text['estado'] == "no válido") {
-                console.log("entra");
+            if(text['estado'] == "no valido") {
                 pintaTableroEstandar();
             } else {
                 tableroModificado(text['tableroModificado']);
@@ -64,6 +61,7 @@ function jugada(casilla) {
                     $('#ascensoModal').modal('show');
                 }                
             }
+            piezaAlzada = !piezaAlzada;
         })
         .catch(function(err) {
            console.log(err);
@@ -86,8 +84,9 @@ function alzarPieza(casilla) {
                throw "Error en la llamada Ajax";
            }
         })
-        .then(function(text) {    
+        .then(function(text) {
             pintaCasillasValidas(text['movimientosValidos']);
+            piezaAlzada = !piezaAlzada;
         })
         .catch(function(err) {
            console.log(err);

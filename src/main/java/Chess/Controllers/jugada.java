@@ -48,11 +48,11 @@ public class jugada extends HttpServlet {
 		partida.cambiarTurno();
 		partida.setCasillaAnterior(new int[]{y, x});
 		session.setAttribute("partida", partida);
-		out.print(new Gson().toJson(send));		
 	} else  {
-		send.put("estado", "no válido");
+		send.put("estado", "no valido");
 	}
 	
+	out.print(new Gson().toJson(send));
         out.close();
     }	   
 }

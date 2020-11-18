@@ -22,9 +22,8 @@ function pintaCasillasValidas(movimientosValidos) {
         for (var j = 0; j <= 7; j++) {
             casilla = fila + (j+1);
             if (movimientosValidos[i][j] === true) {
-                document.getElementById(casilla).style.boxShadow = "inset 0 0 0 4px #3BEB6C";
-                document.getElementById(casilla).style.transition = ".03s ease";
-                document.getElementById(casilla).style.backgroundColor = "#00942A";                            
+                document.getElementById(casilla).style.boxShadow = "inset 0 0 0 5px #cf779b";
+                document.getElementById(casilla).style.backgroundColor = "#f4bad2";                            
             }
         }
         fila = nextChar(fila);
@@ -32,7 +31,7 @@ function pintaCasillasValidas(movimientosValidos) {
 }
 
 function pintaTableroEstandar() {
-    var color = "#e3d3db";
+    var color = "#99e8bb";
     var casilla = "";
     var fila = 'A';
 
@@ -41,10 +40,10 @@ function pintaTableroEstandar() {
             casilla = fila + (j+1);
             document.getElementById(casilla).style.backgroundColor = color;
             document.getElementById(casilla).style.boxShadow = "none";
-            color = (color === "#e3d3db") ? "#34232c" : "#e3d3db";
+            color = (color === "#99e8bb") ? "#744941" : "#99e8bb";
         }
         fila = nextChar(fila);
-        color = (color === "#e3d3db") ? "#34232c" : "#e3d3db";
+        color = (color === "#99e8bb") ? "#744941" : "#99e8bb";
     }
 }
 
