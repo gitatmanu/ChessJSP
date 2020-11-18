@@ -17,7 +17,7 @@
 </head>
 <body>
     <%
-    Partida partida = Partida.inicializaPartida();
+    Partida partida = new Partida(Partida.tableroDefault());
     session.setAttribute("partida", partida);
     
     String color = "#99e8bb";
@@ -43,15 +43,14 @@
     out.println("</div>");
     out.println("</main>");   
 %>
-<!-- Modal -->
 <div class="modal fade" id="ascensoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div style="background-color: #dcdcdc;" class="modal-content">        
         <div class="ascensoModal">
-            <div style="color: red;" onclick='ascenso("Reina")'>&#9813;</div>
-            <div style="color: orange;" onclick='ascenso("Torre")'>&#9814;</div>
-            <div style="color: yellow;" onclick='ascenso("Alfil")'>&#9815;</div>
-            <div style="color: green;" onclick='ascenso("Caballo")'>&#9816;</div>
+            <div onclick='ascenso("Reina")'>&#9813;</div>
+            <div onclick='ascenso("Torre")'>&#9814;</div>
+            <div onclick='ascenso("Alfil")'>&#9815;</div>
+            <div onclick='ascenso("Caballo")'>&#9816;</div>
         </div>
     </div>
   </div>

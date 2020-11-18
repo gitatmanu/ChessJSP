@@ -18,7 +18,7 @@ public abstract class Pieza {
         public Color getColor() {return this.color;}
         
         public abstract boolean[][] movimientosValidos(int y, int x, Partida partida);
-        
+		
         public abstract boolean puedeAscender(int y, int x, Partida partida);
         
         public static void iterarPeon(int y, int x, Color color, List<int[]> movimientosAbsolutos, Partida partida) {
