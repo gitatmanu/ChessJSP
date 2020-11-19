@@ -1,7 +1,9 @@
 package Chess;
 
-public class Utils {
-    public static int charToNum(char c) {      
+public class Utils 
+{
+    public static int charToNum(char c) 
+    {      
         int out = 0;
         switch (c) {
             case 'A':

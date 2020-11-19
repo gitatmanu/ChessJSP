@@ -10,9 +10,9 @@
 <title>Ajedrez DUAL</title>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-<script src="/js/utils.js"></script>
+<script src="/js/ajax.js"></script>
 <script src="/js/functions.js"></script>
-<script src="/js/vista.js"></script>
+<script src="/js/view.js"></script>
 <link href="/css/style.css" rel="stylesheet" />
 </head>
 <body>
@@ -42,18 +42,18 @@
     }
     out.println("</div>");
     out.println("</main>");   
-%>
+    %>
 <div class="modal fade" id="ascensoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div style="background-color: #dcdcdc;" class="modal-content">        
-        <div class="ascensoModal">
-            <div onclick='ascenso("Reina")'>&#9813;</div>
-            <div onclick='ascenso("Torre")'>&#9814;</div>
-            <div onclick='ascenso("Alfil")'>&#9815;</div>
-            <div onclick='ascenso("Caballo")'>&#9816;</div>
-        </div>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div style="background-color: #dcdcdc;" class="modal-content">        
+          <div class="ascensoModal">
+              <div onclick='ascenso("Reina")'>&#9813;</div>
+              <div onclick='ascenso("Torre")'>&#9814;</div>
+              <div onclick='ascenso("Alfil")'>&#9815;</div>
+              <div onclick='ascenso("Caballo")'>&#9816;</div>
+          </div>
+      </div>
     </div>
-  </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

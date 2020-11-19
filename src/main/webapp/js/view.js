@@ -1,13 +1,18 @@
-function tableroModificado(tablero) {
+function tableroModificado(tablero) 
+{
     var casilla = "";
     var fila = 'A';
 
-    for (var i = 0; i <= 7; i++) {
-        for (var j = 0; j <= 7; j++) {
+    for (var i = 0; i <= 7; i++) 
+    {
+        for (var j = 0; j <= 7; j++) 
+        {
             casilla = fila + (j+1);
-            if (tablero[i][j] !== null) {
+            if (tablero[i][j] !== null) 
+            {
                 document.getElementById("span" + casilla).innerHTML = tablero[i][j]["ascii"];
-            }else {
+            }else 
+            {
                 document.getElementById("span" + casilla).innerHTML = "";
             }
         }
@@ -15,13 +20,17 @@ function tableroModificado(tablero) {
     }
 }
 
-function pintaCasillasValidas(movimientosValidos) {
+function pintaCasillasValidas(movimientosValidos) 
+{
     var fila = 'A';
 
-    for (var i = 0; i <= 7; i++) {
-        for (var j = 0; j <= 7; j++) {
+    for (var i = 0; i <= 7; i++) 
+    {
+        for (var j = 0; j <= 7; j++) 
+        {
             casilla = fila + (j+1);
-            if (movimientosValidos[i][j] === true) {
+            if (movimientosValidos[i][j] === true) 
+            {
                 document.getElementById(casilla).style.boxShadow = "inset 0 0 0 5px #cf779b";
                 document.getElementById(casilla).style.backgroundColor = "#f4bad2";                            
             }
@@ -30,13 +39,16 @@ function pintaCasillasValidas(movimientosValidos) {
     }
 }
 
-function pintaTableroEstandar() {
+function pintaTableroEstandar() 
+{
     var color = "#99e8bb";
     var casilla = "";
     var fila = 'A';
 
-    for (var i = 0; i <= 7; i++) {
-        for (var j = 0; j <= 7; j++) {
+    for (var i = 0; i <= 7; i++) 
+    {
+        for (var j = 0; j <= 7; j++) 
+        {
             casilla = fila + (j+1);
             document.getElementById(casilla).style.backgroundColor = color;
             document.getElementById(casilla).style.boxShadow = "none";

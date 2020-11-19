@@ -1,15 +1,19 @@
 var piezaAlzada = false;
 var esAscenso = false;
 
-function comprobarCasilla(casilla) {        
-    if(esAscenso) {
+function comprobarCasilla(casilla) 
+{        
+    if(esAscenso) 
+    {
         $('#ascensoModal').modal('show');
-    } else {
+    } else 
+    {
         piezaAlzada ? jugada(casilla) : alzarPieza(casilla);
     }
 }
 
-function ascenso(piezaElegida) {
+function ascenso(piezaElegida) 
+{
         const data = new FormData();
         data.append("clave", "ascenso");
         data.append("piezaElegida", piezaElegida);
@@ -34,7 +38,8 @@ function ascenso(piezaElegida) {
         });
 }
 
-function jugada(casilla) {
+function jugada(casilla) 
+{
         const data = new FormData();
         data.append("clave", "jugada");
         data.append("casilla", casilla);
@@ -51,12 +56,15 @@ function jugada(casilla) {
            }
         })
         .then(function(text) {
-            if(text['estado'] == "no valido") {
+            if(text['estado'] == "no valido") 
+            {
                 pintaTableroEstandar();
-            } else {
+            } else 
+            {
                 tableroModificado(text['tableroModificado']);
                 pintaTableroEstandar();
-                if (text['ascenso'] == true) {
+                if (text['ascenso'] == true) 
+                {
                     esAscenso = true;
                     $('#ascensoModal').modal('show');
                 }                
@@ -68,7 +76,8 @@ function jugada(casilla) {
         });
 }
 
-function alzarPieza(casilla) {
+function alzarPieza(casilla) 
+{
         const data = new FormData();    
         data.append("clave", "alzarPieza");
         data.append("casilla", casilla);

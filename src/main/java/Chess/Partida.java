@@ -8,23 +8,43 @@ public class Partida {
 	private Color turno = Color.BLANCAS;
         private int[] casillaAnterior;
         
-	public Color getTurno() {return this.turno;}
-	
-	public Partida(Pieza[][] tablero) {this.tablero = tablero;}
-	
-        public void setCasillaAnterior(int[] casilla) {this.casillaAnterior = casilla;}
+	public Partida(Pieza[][] tablero) 
+        {
+            this.tablero = tablero;
+        }
         
-	public Pieza[][] getTablero() {return this.tablero;}
+	public Color getTurno() 
+        {
+            return this.turno;
+        }
+	
+        public void setCasillaAnterior(int[] casilla) 
+        {
+            this.casillaAnterior = casilla;
+        }
+        
+	public Pieza[][] getTablero() 
+        {
+            return this.tablero;
+        }
 
-	public int[] getCasillaAnterior() {return this.casillaAnterior;}
+	public int[] getCasillaAnterior() 
+        {
+            return this.casillaAnterior;
+        }
         
-	public ArrayList<Pieza> getCementerio() {return this.cementerio;}
+	public ArrayList<Pieza> getCementerio() 
+        {
+            return this.cementerio;
+        }
 	
-	public void cambiarTurno() {
+	public void cambiarTurno() 
+        {
 		this.turno = this.turno == Color.BLANCAS ? Color.NEGRAS : Color.BLANCAS;
 	}
 	
-        public static Pieza[][] tableroDefault() {
+        public static Pieza[][] tableroDefault() 
+        {
                 
 		Pieza[][] tablero = new Pieza[8][8]; // Inicializo tablero
 		
@@ -68,24 +88,30 @@ public class Partida {
                 return tablero;
 	}
         
-        public boolean comprobarAcenso(int y , int x) {
+        public boolean comprobarAcenso(int y , int x) 
+        {
             return this.tablero[y][x].puedeAscender(y, x, this);
         }
         
-	public boolean esJugadaValida(int y, int x) {
+	public boolean esJugadaValida(int y, int x) 
+        {
 		boolean[][] movimientosValidos = new boolean[8][8];
 		movimientosValidos = tablero[casillaAnterior[0]][casillaAnterior[1]].movimientosValidos(casillaAnterior[0], casillaAnterior[1], this);
 		
 		return movimientosValidos[y][x] == true;
 	}
 	
-        public Pieza[][] hacerJugada(int y, int x) {
+        public Pieza[][] hacerJugada(int y, int x) 
+        {
             boolean[][] movimientosValidos = new boolean[8][8];
             movimientosValidos = tablero[casillaAnterior[0]][casillaAnterior[1]].movimientosValidos(casillaAnterior[0], casillaAnterior[1], this);
             
-            if(movimientosValidos[y][x] == true) {
-                if(tablero[y][x] != null) {piezaACementerio(tablero[y][x]);
-            }
+            if(movimientosValidos[y][x] == true) 
+            {
+                if(tablero[y][x] != null) 
+                {
+                    piezaACementerio(tablero[y][x]);
+                }
                 
                 tablero[y][x] = tablero[casillaAnterior[0]][casillaAnterior[1]];
                 tablero[casillaAnterior[0]][casillaAnterior[1]] = null;
@@ -94,10 +120,12 @@ public class Partida {
             return tablero;
         }
         
-        public Pieza[][] ascenderPieza(String piezaElegida) {
+        public Pieza[][] ascenderPieza(String piezaElegida) 
+        {
             Pieza pieza = null;
 	    
-            switch(piezaElegida) {
+            switch(piezaElegida) 
+            {
                 case "Reina":
                     pieza = new Reina(this.tablero[casillaAnterior[0]][casillaAnterior[1]].getColor());
                     break;
@@ -119,5 +147,8 @@ public class Partida {
             return this.tablero;
         }
         
-	public void piezaACementerio(Pieza piezaMuerta) {cementerio.add(piezaMuerta);}    
+	public void piezaACementerio(Pieza piezaMuerta) 
+        {
+            cementerio.add(piezaMuerta);
+        }    
 }
