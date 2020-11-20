@@ -38,7 +38,7 @@ public abstract class Piece
                         
             if(yDifferent <= 7 && yDifferent >= 0) 
             {
-                if ( x - 1 <= 7 && x - 1 >= 0 && game.getBoard()[yDifferent][x - 1] != null && game.getBoard()[yDifferent][x - 1].getColour() != game.getBoard()[y][x].getColour()) 
+                if (x - 1 <= 7 && x - 1 >= 0 && game.getBoard()[yDifferent][x - 1] != null && game.getBoard()[yDifferent][x - 1].getColour() != game.getBoard()[y][x].getColour()) 
                 {
                     absoluteMovements.add(new int[]{yDifferent, x - 1});
                 }
@@ -50,24 +50,22 @@ public abstract class Piece
             
             if (exitRow == y) 
             {
-                while(yDifferent != y - 3 && yDifferent != y + 3) 
-                {
-                    if(yDifferent < 0 || yDifferent > 7) 
+                while(yDifferent >= 0 && yDifferent <= 7 && yDifferent != y - 3 && yDifferent != y + 3) 
+                {   
+                    if(game.getBoard()[yDifferent][x] != null) 
                     {
-                        break;
-                    }
-                    if(game.getBoard()[yDifferent][x] != null && game.getBoard()[yDifferent][x].getColour() == game.getBoard()[y][x].getColour()) 
-                    {
-                       break; 
-                    }
-                    if(game.getBoard()[yDifferent][x] != null && game.getBoard()[yDifferent][x].getColour() != game.getBoard()[y][x].getColour()) 
-                    {
-                        break;           
-                    }
-                    if(game.getBoard()[yDifferent][x] == null) 
-                    {
+                        if(game.getBoard()[yDifferent][x].getColour() == game.getBoard()[y][x].getColour()) 
+                        {
+                           break; 
+                        }
+                        if(game.getBoard()[yDifferent][x].getColour() != game.getBoard()[y][x].getColour()) 
+                        {
+                            break;           
+                        }                        
+                    } else {
                         absoluteMovements.add(new int[]{yDifferent, x});
                     }
+                    
                     
                     if(yDifferent < y) 
                     {
@@ -108,9 +106,9 @@ public abstract class Piece
            
                 if(game.getBoard()[move[0]][move[1]] != null) 
                 {
-                    if (game.getBoard()[move[0]][move[1]].getColour() == game.getBoard()[y][x].getColour()){
+                    if (game.getBoard()[move[0]][move[1]].getColour() == game.getBoard()[y][x].getColour())
+                    {
                         iterator.remove();
-                        continue;
                     }               
                 }
             }
@@ -118,29 +116,21 @@ public abstract class Piece
         
         public static void iterateDirection(int y, int x, int yDifferent, int xDifferent, List<int[]> absoluteMovements, Game game) 
         {
-            while(true) 
-            {
-                if(yDifferent < 0 || yDifferent > 7 || xDifferent < 0 || xDifferent > 7) 
+            while(yDifferent >= 0 && yDifferent <= 7 && xDifferent >= 0 && xDifferent <= 7) 
+            {       
+                if(game.getBoard()[yDifferent][xDifferent] != null) 
                 {
-                    break;
-                }   
-                
-                if(game.getBoard()[yDifferent][xDifferent] != null && game.getBoard()[yDifferent][xDifferent].getColour() == game.getBoard()[y][x].getColour()) 
-                {
-                   break; 
-                }
-                
-                if(game.getBoard()[yDifferent][xDifferent] != null && game.getBoard()[yDifferent][xDifferent].getColour() != game.getBoard()[y][x].getColour()) 
-                {
-                    absoluteMovements.add(new int[]{yDifferent, xDifferent});
-                    break;           
-                }
-                
-                if(game.getBoard()[yDifferent][xDifferent] == null) 
+                    if(game.getBoard()[yDifferent][xDifferent].getColour() != game.getBoard()[y][x].getColour()) 
+                    {
+                        absoluteMovements.add(new int[]{yDifferent, xDifferent});
+                    }
+                    break;                                   
+                } else 
                 {
                     absoluteMovements.add(new int[]{yDifferent, xDifferent});
                 }
-               
+                
+                
                 if(yDifferent < y) 
                 {
                     yDifferent--;

@@ -128,19 +128,19 @@ public class Game
             switch(chosenSquare) 
             {
                 case "Queen":
-                    piece = new Queen(this.board[previousSquare[0]][previousSquare[1]].getColour());
+                    piece = new Queen(board[previousSquare[0]][previousSquare[1]].getColour());
                     break;
                     
                 case "Knight":
-                    piece = new Knight(this.board[previousSquare[0]][previousSquare[1]].getColour());
+                    piece = new Knight(board[previousSquare[0]][previousSquare[1]].getColour());
                     break;
                 
                 case "Bishop":
-                    piece = new Bishop(this.board[previousSquare[0]][previousSquare[1]].getColour());
+                    piece = new Bishop(board[previousSquare[0]][previousSquare[1]].getColour());
                     break;
                     
                 case "Rook":
-                    piece = new Rook(this.board[previousSquare[0]][previousSquare[1]].getColour());
+                    piece = new Rook(board[previousSquare[0]][previousSquare[1]].getColour());
                     break;      
             }
             
