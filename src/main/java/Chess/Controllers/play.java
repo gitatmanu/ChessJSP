@@ -1,6 +1,6 @@
 package Chess.Controllers;
-import Chess.Partida;
-import Chess.Pieza;
+import Chess.Game;
+import Chess.Piece;
 import Chess.Utils;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,41 +15,41 @@ import com.google.gson.Gson;
 import java.util.HashMap;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/jugada")
+@WebServlet("/play")
 @MultipartConfig
-public class jugada extends HttpServlet {
+public class play extends HttpServlet {
 	private static final long serialVersionUID = 1L;     
 
-    public jugada() {
+    public play() {
         super();
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Partida partida = (Partida) session.getAttribute("partida");
+        Game game = (Game) session.getAttribute("game");
 
         PrintWriter out = response.getWriter();    
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        String casilla = request.getParameter("casilla");
+        String square = request.getParameter("square");
         HashMap send = new HashMap();
-        int y = Utils.charToNum(casilla.charAt(0));
-        int x = Integer.parseInt(String.valueOf(casilla.charAt(1))) - 1;
+        int y = Utils.charToIndex(square.charAt(0));
+        int x = Integer.parseInt(String.valueOf(square.charAt(1))) - 1;
 
 	
-	if (partida.esJugadaValida(y, x)) {
-		Pieza[][] tableroModificado = partida.hacerJugada(y,x);
+	if (game.isValidPlay(y, x)) {
+		Piece[][] modifiedBoard = game.doPlay(y,x);
 
-		send.put("tableroModificado", tableroModificado);
-		send.put("ascenso", partida.comprobarAcenso(y, x));
-		send.put("estado", "válido");
+		send.put("modifiedBoard", modifiedBoard);
+		send.put("promotion", game.checkPromotion(y, x));
+		send.put("state", "valid");
 
-		partida.cambiarTurno();
-		partida.setCasillaAnterior(new int[]{y, x});
-		session.setAttribute("partida", partida);
+		game.alternateTurn();
+		game.setPreviousSquare(new int[]{y, x});
+		session.setAttribute("game", game);
 	} else  {
-		send.put("estado", "no valido");
+		send.put("state", "not valid");
 	}
 	
 	out.print(new Gson().toJson(send));

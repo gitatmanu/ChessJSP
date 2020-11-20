@@ -2,7 +2,7 @@ package Chess;
 
 public class Utils 
 {
-    public static int charToNum(char c) 
+    public static int charToIndex(char c) 
     {      
         int out = 0;
         switch (c) {

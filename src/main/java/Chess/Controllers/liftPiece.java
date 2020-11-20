@@ -1,6 +1,6 @@
 package Chess.Controllers;
-import Chess.Partida;
-import Chess.Pieza;
+import Chess.Game;
+import Chess.Piece;
 import Chess.Utils;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,36 +15,36 @@ import com.google.gson.Gson;
 import java.util.HashMap;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/alzarPieza")
+@WebServlet("/liftPiece")
 @MultipartConfig
-public class alzarPieza extends HttpServlet {
+public class liftPiece extends HttpServlet {
 	private static final long serialVersionUID = 1L;     
 
-    public alzarPieza() {
+    public liftPiece() {
         super();
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Partida partida = (Partida) session.getAttribute("partida");
+        Game game = (Game) session.getAttribute("game");
 
         PrintWriter out = response.getWriter();    
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        String casilla = request.getParameter("casilla");
+        String square = request.getParameter("square");
         HashMap send = new HashMap();
 
-        int y = Utils.charToNum(casilla.charAt(0));
-        int x = Integer.parseInt(String.valueOf(casilla.charAt(1))) - 1;
+        int y = Utils.charToIndex(square.charAt(0));
+        int x = Integer.parseInt(String.valueOf(square.charAt(1))) - 1;
 
-	if(partida.getTurno() == partida.getTablero()[y][x].getColor()) {
-		boolean[][] movimientosValidos = partida.getTablero()[y][x].movimientosValidos(y,x,partida);
-		send.put("movimientosValidos", movimientosValidos);
+	if(game.getTurn() == game.getBoard()[y][x].getColour()) {
+		boolean[][] validMovements = game.getBoard()[y][x].validMovements(y,x,game);
+		send.put("validMovements", validMovements);
 		out.print(new Gson().toJson(send));
-		partida.setCasillaAnterior(new int[]{y, x});
+		game.setPreviousSquare(new int[]{y, x});
 	}
-	session.setAttribute("partida", partida);
+	session.setAttribute("game", game);
         out.close();	
 	}
 }	   

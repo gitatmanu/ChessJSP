@@ -1,6 +1,6 @@
 package Chess.Controllers;
-import Chess.Partida;
-import Chess.Pieza;
+import Chess.Game;
+import Chess.Piece;
 import Chess.Utils;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,30 +15,30 @@ import com.google.gson.Gson;
 import java.util.HashMap;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/ascenso")
+@WebServlet("/promotion")
 @MultipartConfig
-public class ascenso extends HttpServlet {
+public class promotion extends HttpServlet {
 	private static final long serialVersionUID = 1L;     
 
-    public ascenso() {
+    public promotion() {
         super();
     }
    
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Partida partida = (Partida) session.getAttribute("partida");
+        Game game = (Game) session.getAttribute("game");
 
         PrintWriter out = response.getWriter();    
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-	String piezaElegida = request.getParameter("piezaElegida");
+	String chosenPiece = request.getParameter("chosenPiece");
         HashMap send = new HashMap();
 
-	Pieza[][] tablero = partida.ascenderPieza(piezaElegida);
-	send.put("ascenso", tablero);
+	Piece[][] board = game.ascendPiece(chosenPiece);
+	send.put("promotion", board);
 
-        session.setAttribute("partida", partida);
+        session.setAttribute("game", game);
         out.print(new Gson().toJson(send));
         out.close();
     }

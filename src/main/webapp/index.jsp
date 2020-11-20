@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ajedrez DUAL</title>
+<title>DUAL Chess on JSP</title>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 <script src="/js/ajax.js"></script>
@@ -17,40 +17,40 @@
 </head>
 <body>
     <%
-    Partida partida = new Partida(Partida.tableroDefault());
-    session.setAttribute("partida", partida);
+    Game game = new Game(Game.defaultBoardSet());
+    session.setAttribute("game", game);
     
-    String color = "#99e8bb";
-    String casilla = "";
-    char fila = 'A';
+    String colour = "#99e8bb";
+    String square = "";
+    char row = 'A';
     out.println("<main>");     
-    out.println("<div id='tablero'>");
+    out.println("<div id='board'>");
     for (int i = 0; i <= 7; i++) {
-        out.println("<div class='fila'>");
+        out.println("<div class='row'>");
         for (int j = 0; j <= 7; j++) {
-            casilla = fila + String.valueOf(j+1);
-            out.println("<div id='" + casilla + "' class='casilla' style='background-color: " + color + "' onclick='comprobarCasilla(\"" + casilla + "\")'>");
-            if(partida.getTablero()[i][j] != null){
-                out.println("<span id='"+ "span"+ casilla + "'>" + partida.getTablero()[i][j].getAscii() + "</span>");
-            }else {out.println("<span id='" + "span" + casilla + "'></span>");}
+            square = row + String.valueOf(j+1);
+            out.println("<div id='" + square + "' class='square' style='background-color: " + colour + "' onclick='checkSquare(\"" + square + "\")'>");
+            if(game.getBoard()[i][j] != null){
+                out.println("<span id='"+ "span"+ square + "'>" + game.getBoard()[i][j].getAsciiCode()+ "</span>");
+            }else {out.println("<span id='" + "span" + square + "'></span>");}
                 out.println("</div>");
-            color = color == "#99e8bb" ? "#744941" : "#99e8bb";
+            colour = colour == "#99e8bb" ? "#744941" : "#99e8bb";
         }
-        fila++;
-        color = color == "#99e8bb" ? "#744941" : "#99e8bb";
+        row++;
+        colour = colour == "#99e8bb" ? "#744941" : "#99e8bb";
         out.println("</div>");  
     }
     out.println("</div>");
     out.println("</main>");   
     %>
-<div class="modal fade" id="ascensoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ascendModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div style="background-color: #dcdcdc;" class="modal-content">        
-          <div class="ascensoModal">
-              <div onclick='ascenso("Reina")'>&#9813;</div>
-              <div onclick='ascenso("Torre")'>&#9814;</div>
-              <div onclick='ascenso("Alfil")'>&#9815;</div>
-              <div onclick='ascenso("Caballo")'>&#9816;</div>
+          <div class="ascendModal">
+              <div onclick='promotion("Queen")'>&#9813;</div>
+              <div onclick='promotion("Rook")'>&#9814;</div>
+              <div onclick='promotion("Bishop")'>&#9815;</div>
+              <div onclick='promotion("Knight")'>&#9816;</div>
           </div>
       </div>
     </div>

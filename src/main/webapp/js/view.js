@@ -1,61 +1,61 @@
-function tableroModificado(tablero) 
+function modifiedBoard(board) 
 {
-    var casilla = "";
-    var fila = 'A';
+    var square = "";
+    var row = 'A';
 
     for (var i = 0; i <= 7; i++) 
     {
         for (var j = 0; j <= 7; j++) 
         {
-            casilla = fila + (j+1);
-            if (tablero[i][j] !== null) 
+            square = row + (j+1);
+            if (board[i][j] !== null) 
             {
-                document.getElementById("span" + casilla).innerHTML = tablero[i][j]["ascii"];
+                document.getElementById("span" + square).innerHTML = board[i][j]["asciiCode"];
             }else 
             {
-                document.getElementById("span" + casilla).innerHTML = "";
+                document.getElementById("span" + square).innerHTML = "";
             }
         }
-        fila = nextChar(fila);
+        row = nextChar(row);
     }
 }
 
-function pintaCasillasValidas(movimientosValidos) 
+function paintValidMovements(validMovements) 
 {
-    var fila = 'A';
+    var row = 'A';
 
     for (var i = 0; i <= 7; i++) 
     {
         for (var j = 0; j <= 7; j++) 
         {
-            casilla = fila + (j+1);
-            if (movimientosValidos[i][j] === true) 
+            square = row + (j+1);
+            if (validMovements[i][j] === true) 
             {
-                document.getElementById(casilla).style.boxShadow = "inset 0 0 0 5px #cf779b";
-                document.getElementById(casilla).style.backgroundColor = "#f4bad2";                            
+                document.getElementById(square).style.boxShadow = "inset 0 0 0 5px #cf779b";
+                document.getElementById(square).style.backgroundColor = "#f4bad2";                            
             }
         }
-        fila = nextChar(fila);
+        row = nextChar(row);
     }
 }
 
-function pintaTableroEstandar() 
+function paintDefaultBoard() 
 {
-    var color = "#99e8bb";
-    var casilla = "";
-    var fila = 'A';
+    var colour = "#99e8bb";
+    var square = "";
+    var row = 'A';
 
     for (var i = 0; i <= 7; i++) 
     {
         for (var j = 0; j <= 7; j++) 
         {
-            casilla = fila + (j+1);
-            document.getElementById(casilla).style.backgroundColor = color;
-            document.getElementById(casilla).style.boxShadow = "none";
-            color = (color === "#99e8bb") ? "#744941" : "#99e8bb";
+            square = row + (j+1);
+            document.getElementById(square).style.backgroundColor = colour;
+            document.getElementById(square).style.boxShadow = "none";
+            colour = (colour === "#99e8bb") ? "#744941" : "#99e8bb";
         }
-        fila = nextChar(fila);
-        color = (color === "#99e8bb") ? "#744941" : "#99e8bb";
+        row = nextChar(row);
+        colour = (colour === "#99e8bb") ? "#744941" : "#99e8bb";
     }
 }
 

@@ -1,23 +1,23 @@
-var piezaAlzada = false;
-var esAscenso = false;
+var raisedPiece = false;
+var isPromotion = false;
 
-function comprobarCasilla(casilla) 
+function checkSquare(square) 
 {        
-    if(esAscenso) 
+    if(isPromotion) 
     {
-        $('#ascensoModal').modal('show');
+        $('#ascendModal').modal('show');
     } else 
     {
-        piezaAlzada ? jugada(casilla) : alzarPieza(casilla);
+        raisedPiece ? play(square) : liftPiece(square);
     }
 }
 
-function ascenso(piezaElegida) 
+function promotion(chosenPiece) 
 {
         const data = new FormData();
-        data.append("clave", "ascenso");
-        data.append("piezaElegida", piezaElegida);
-        fetch('ascenso', {
+        data.append("key", "promotion");
+        data.append("chosenPiece", chosenPiece);
+        fetch('promotion', {
                 method: 'POST',
                 body: data
         })
@@ -29,22 +29,22 @@ function ascenso(piezaElegida)
            }
         })
         .then(function(text) {
-            tableroModificado(text['ascenso']);
-            esAscenso = false;
-            $('#ascensoModal').modal('hide');
+            modifiedBoard(text['promotion']);
+            isPromotion = false;
+            $('#ascendModal').modal('hide');
         })
         .catch(function(err) {
            console.log(err);
         });
 }
 
-function jugada(casilla) 
+function play(square) 
 {
         const data = new FormData();
-        data.append("clave", "jugada");
-        data.append("casilla", casilla);
+        data.append("key", "play");
+        data.append("square", square);
         
-        fetch('jugada', {
+        fetch('play', {
                 method: 'POST',
                 body: data
         })
@@ -56,33 +56,34 @@ function jugada(casilla)
            }
         })
         .then(function(text) {
-            if(text['estado'] == "no valido") 
+            console.log(text);
+            if(text['state'] == "not valid") 
             {
-                pintaTableroEstandar();
+                paintDefaultBoard();
             } else 
             {
-                tableroModificado(text['tableroModificado']);
-                pintaTableroEstandar();
-                if (text['ascenso'] == true) 
+                modifiedBoard(text['modifiedBoard']);
+                paintDefaultBoard();
+                if (text['promotion'] == true) 
                 {
-                    esAscenso = true;
-                    $('#ascensoModal').modal('show');
+                    isPromotion = true;
+                    $('#ascendModal').modal('show');
                 }                
             }
-            piezaAlzada = !piezaAlzada;
+            raisedPiece = !raisedPiece;
         })
         .catch(function(err) {
            console.log(err);
         });
 }
 
-function alzarPieza(casilla) 
+function liftPiece(square) 
 {
         const data = new FormData();    
-        data.append("clave", "alzarPieza");
-        data.append("casilla", casilla);
+        data.append("key", "liftPiece");
+        data.append("square", square);
         
-        fetch('alzarPieza', {
+        fetch('liftPiece', {
                 method: 'POST',
                 body: data
         })
@@ -94,8 +95,8 @@ function alzarPieza(casilla)
            }
         })
         .then(function(text) {
-            pintaCasillasValidas(text['movimientosValidos']);
-            piezaAlzada = !piezaAlzada;
+            paintValidMovements(text['validMovements']);
+            raisedPiece = !raisedPiece;
         })
         .catch(function(err) {
            console.log(err);
