@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rook extends Piece 
-{
-        
+{  
     public Rook(Colour colour) 
     {
         super(colour, colour == Colour.WHITE ? "&#9814": "&#9820;");

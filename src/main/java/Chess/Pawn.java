@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pawn extends Piece 
-{
-    
+{  
     public Pawn(Colour colour) 
     {
         super(colour, colour == Colour.WHITE ? "&#9817;": "&#9823;");
@@ -23,7 +22,13 @@ public class Pawn extends Piece
         boolean[][] board = new boolean[8][8];
         List<int[]> absoluteMovements = new ArrayList();
 
-        Piece.iteratePawn(y, x, game.getBoard()[y][x].getColour(), absoluteMovements, game);
+        Piece.iteratePawn(
+		y, 
+		x, 
+		game.getBoard()[y][x].getColour(), 
+		absoluteMovements, 
+		game
+	);
         
         Piece.insertValidMovements(board, absoluteMovements);
         

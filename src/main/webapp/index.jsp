@@ -17,7 +17,7 @@
 </head>
 <body>
     <%
-    Game game = new Game(Game.defaultBoardSet());
+    Game game = new Game(Game.setDefaultBoard());
     session.setAttribute("game", game);
     
     String colour = "#99e8bb";

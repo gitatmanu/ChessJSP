@@ -1,10 +1,10 @@
 package Chess.Controllers;
+
 import Chess.Game;
 import Chess.Piece;
 import Chess.Utils;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -17,14 +17,16 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/liftPiece")
 @MultipartConfig
-public class liftPiece extends HttpServlet {
+public class liftPiece extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;     
 
-    public liftPiece() {
+    public liftPiece() 
+	{
         super();
     }
     
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException	{
         HttpSession session = request.getSession();
         Game game = (Game) session.getAttribute("game");
 
@@ -38,13 +40,14 @@ public class liftPiece extends HttpServlet {
         int y = Utils.charToIndex(square.charAt(0));
         int x = Integer.parseInt(String.valueOf(square.charAt(1))) - 1;
 
-	if(game.getTurn() == game.getBoard()[y][x].getColour()) {
+	if(game.getTurn() == game.getBoard()[y][x].getColour()) 
+	{
 		boolean[][] validMovements = game.getBoard()[y][x].validMovements(y,x,game);
 		send.put("validMovements", validMovements);
 		out.print(new Gson().toJson(send));
 		game.setPreviousSquare(new int[]{y, x});
 	}
 	session.setAttribute("game", game);
-        out.close();	
+    out.close();	
 	}
 }	   

@@ -1,10 +1,10 @@
 package Chess.Controllers;
+
 import Chess.Game;
 import Chess.Piece;
 import Chess.Utils;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -17,14 +17,16 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/promotion")
 @MultipartConfig
-public class promotion extends HttpServlet {
-	private static final long serialVersionUID = 1L;     
+public class promotion extends HttpServlet 
+{
+    private static final long serialVersionUID = 1L;     
 
-    public promotion() {
+    public promotion() 
+    {
         super();
     }
    
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException     {
         HttpSession session = request.getSession();
         Game game = (Game) session.getAttribute("game");
 
@@ -42,5 +44,4 @@ public class promotion extends HttpServlet {
         out.print(new Gson().toJson(send));
         out.close();
     }
-    
 }
