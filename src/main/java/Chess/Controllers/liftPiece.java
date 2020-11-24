@@ -1,7 +1,6 @@
 package Chess.Controllers;
 
 import Chess.Game;
-import Chess.Piece;
 import Chess.Utils;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,14 +39,14 @@ public class liftPiece extends HttpServlet
         int y = Utils.charToIndex(square.charAt(0));
         int x = Integer.parseInt(String.valueOf(square.charAt(1))) - 1;
 
-	if(game.getTurn() == game.getBoard()[y][x].getColour()) 
-	{
-		boolean[][] validMovements = game.getBoard()[y][x].validMovements(y,x,game);
-		send.put("validMovements", validMovements);
-		out.print(new Gson().toJson(send));
-		game.setPreviousSquare(new int[]{y, x});
-	}
-	session.setAttribute("game", game);
-    out.close();	
-	}
-}	   
+        if(game.getTurn() == game.getBoard()[y][x].getColour())
+        {
+            boolean[][] validMovements = game.getBoard()[y][x].validMovements(y,x,game);
+            send.put("validMovements", validMovements);
+            out.print(new Gson().toJson(send));
+            game.setPreviousSquare(new int[]{y, x});
+        }
+        session.setAttribute("game", game);
+        out.close();
+    }
+}

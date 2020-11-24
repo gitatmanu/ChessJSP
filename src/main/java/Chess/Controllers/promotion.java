@@ -34,11 +34,11 @@ public class promotion extends HttpServlet
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-	String chosenPiece = request.getParameter("chosenPiece");
+        String chosenPiece = request.getParameter("chosenPiece");
         HashMap send = new HashMap();
 
-	Piece[][] board = game.ascendPiece(chosenPiece);
-	send.put("promotion", board);
+        Piece[][] board = game.ascendPiece(chosenPiece);
+        send.put("promotion", board);
 
         session.setAttribute("game", game);
         out.print(new Gson().toJson(send));

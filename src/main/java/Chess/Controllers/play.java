@@ -39,24 +39,27 @@ public class play extends HttpServlet
         int y = Utils.charToIndex(square.charAt(0));
         int x = Integer.parseInt(String.valueOf(square.charAt(1))) - 1;
 	    
-	if (game.isValidPlay(y, x)) 
-	{
-		Piece[][] modifiedBoard = game.doPlay(y,x);
+        if (game.isValidPlay(y, x))
+        {
+            Piece[][] modifiedBoard = game.doPlay(y,x);
 
-		send.put("modifiedBoard", modifiedBoard);
-		send.put("promotion", game.checkPromotion(y, x));
-		send.put("state", "valid");
+            send.put("promotion", game.checkPromotion(y, x));
+            send.put("state", "valid");
+            send.put("modifiedBoard", modifiedBoard);
+            send.put("turn", game.getTurn());
 
-		game.alternateTurn();
-		game.setPreviousSquare(new int[]{y, x});
-		session.setAttribute("game", game);
-	} 
-	else  
-	{
-		send.put("state", "not valid");
-	}
-	
-	out.print(new Gson().toJson(send));
+            game.alternateTurn();
+            game.setPreviousSquare(new int[]{y, x});
+            session.setAttribute("game", game);
+        }
+        else
+        {
+            send.put("state", "not valid");
+        }
+        send.put("whiteCemetery", game.getWhiteCemetery());
+        send.put("blackCemetery", game.getBlackCemetery());
+
+        out.print(new Gson().toJson(send));
         out.close();
-    }	   
+    }
 }
