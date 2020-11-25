@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Knight extends Piece 
 {
-        
     public Knight(Colour colour) 
     {
         super(colour, colour == Colour.WHITE ? "&#9816;": "&#9822;");

@@ -1,4 +1,28 @@
-function modifiedBoard(board) 
+function modifiedCemetery(whiteCemetery, blackCemetery)
+{
+    if (whiteCemetery != undefined)
+    {
+        for (piece in whiteCemetery)
+        {
+            var pis = document.createElement("span");
+            pis.innerText(piece['asciiCode']);
+            document.getElementById("cemetery").appendChild(piece);
+        }
+    }
+
+    if(blackCemetery != undefined)
+    {
+        for (piece in blackCemetery)
+        {
+            var pis = document.createElement("span");
+            pis.innerText(piece['asciiCode']);
+            document.getElementById("cemetery").appendChild(piece);
+        }
+    }
+    console.log(blackCemetery + whiteCemetery);
+}
+
+function modifiedBoard(board)
 {
     var square = "";
     var row = 'A';

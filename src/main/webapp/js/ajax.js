@@ -62,9 +62,10 @@ function play(square)
                 paintDefaultBoard();
             } else 
             {
-                modifiedBoard(text['modifiedBoard']);
                 paintDefaultBoard();
-                if (text['promotion'] == true) 
+                modifiedBoard(text['modifiedBoard']);
+                modifiedCemetery(text['whiteCemetery'], text['blackCemetery']);
+                if (text['promotion'] == true)
                 {
                     isPromotion = true;
                     $('#ascendModal').modal('show');
@@ -95,6 +96,7 @@ function liftPiece(square)
            }
         })
         .then(function(text) {
+            console.log(text);
             paintValidMovements(text['validMovements']);
             raisedPiece = !raisedPiece;
         })

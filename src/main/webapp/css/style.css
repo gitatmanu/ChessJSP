@@ -6,7 +6,7 @@ body {
  main {
          height: 100vh;
          display: flex;
-         flex-direction: column;
+         flex-direction: row;
          justify-content: center;
          align-items: center;
          margin: 0 auto;
@@ -43,4 +43,15 @@ body {
     -webkit-user-select:none;
     -moz-user-select:none;
     -ms-user-select:none;
+ }
+
+ #cemetery {
+     margin-top: 70px;
+     margin-bottom: 70px;
+     margin-left: 25px;
+     float: left;
+     height: 90vh;
+     display: flex;
+     flex-direction: column;
+     justify-content: right;
  }
