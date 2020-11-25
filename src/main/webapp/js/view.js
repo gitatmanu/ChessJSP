@@ -1,25 +1,23 @@
 function modifiedCemetery(whiteCemetery, blackCemetery)
 {
-    if (whiteCemetery != undefined)
+    document.getElementById("whiteCemetery").innerHTML = "";
+    document.getElementById("blackCemetery").innerHTML = "";
+
+    for (let i = 0; i < whiteCemetery.length; i++)
     {
-        for (piece in whiteCemetery)
-        {
-            var pis = document.createElement("span");
-            pis.innerText(piece['asciiCode']);
-            document.getElementById("cemetery").appendChild(piece);
-        }
+        var pis = document.createElement("span");
+        pis.className = "square";
+        pis.innerHTML = whiteCemetery[i]['asciiCode'];
+        document.getElementById("whiteCemetery").appendChild(pis);
     }
 
-    if(blackCemetery != undefined)
+    for (let j = 0; j < blackCemetery.length; j++)
     {
-        for (piece in blackCemetery)
-        {
-            var pis = document.createElement("span");
-            pis.innerText(piece['asciiCode']);
-            document.getElementById("cemetery").appendChild(piece);
-        }
+        var pis = document.createElement("span");
+        pis.className = "square";
+        pis.innerHTML = blackCemetery[j]['asciiCode'];
+        document.getElementById("blackCemetery").appendChild(pis);
     }
-    console.log(blackCemetery + whiteCemetery);
 }
 
 function modifiedBoard(board)

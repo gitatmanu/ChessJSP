@@ -4,13 +4,7 @@
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
-<<<<<<< HEAD
         <datasource-mapping />
-=======
-        <datasource-mapping>
-          <factory-entry name="prod" />
-        </datasource-mapping>
->>>>>>> d76f8ed4ddfca0014446cbc0444c2164a1e2a30a
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>

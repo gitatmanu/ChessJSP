@@ -21,6 +21,11 @@
     String square = "";
     char row = 'A';
     out.println("<main>");
+    %>
+     
+    <div id="whiteCemetery"></div>
+    
+     <%
     out.println("<div id='board'>");
     for (int i = 0; i <= 7; i++) {
         out.println("<div class='row'>");
@@ -39,7 +44,9 @@
     }
     out.println("</div>");
     %>
-        <div id="cemetery"></div>
+    
+        <div id="blackCemetery"></div>
+    
     <%
     out.println("</main>");   
     %>
