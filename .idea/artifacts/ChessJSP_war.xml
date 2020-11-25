@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ChessJSP:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>ChessJSP</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="ChessJSP.war">
+      <element id="artifact" artifact-name="ChessJSP:war exploded" />
+    </root>
+  </artifact>
+</component>
