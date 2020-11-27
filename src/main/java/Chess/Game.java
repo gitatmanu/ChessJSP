@@ -1,4 +1,5 @@
 package Chess;
+
 import java.util.ArrayList;
 
 public class Game {
@@ -89,8 +90,7 @@ public class Game {
     public boolean isValidPlay(int y, int x) {
         boolean[][] validMovements = new boolean[8][8];
 
-        if(this.turn != this.getBoard()[previousSquare[0]][previousSquare[1]].getColour())
-        {
+        if (this.turn != this.getBoard()[previousSquare[0]][previousSquare[1]].getColour()) {
             return false;
         }
 
@@ -150,8 +150,7 @@ public class Game {
         return this.board;
     }
 
-    public void sendToCemetery(Piece piece)
-    {
+    public void sendToCemetery(Piece piece) {
         if (piece.getColour() == Colour.BLACK) {
             this.blackCemetery.add(piece);
         } else {

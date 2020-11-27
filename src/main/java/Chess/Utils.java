@@ -1,19 +1,17 @@
 package Chess;
 
-public class Utils 
-{
-    public static int charToIndex(char c) 
-    {      
+public class Utils {
+    public static int charToIndex(char c) {
         int out = 0;
         switch (c) {
             case 'A':
                 out = 0;
                 break;
             case 'B':
-                out = 1;               
+                out = 1;
                 break;
             case 'C':
-                out = 2;               
+                out = 2;
                 break;
             case 'D':
                 out = 3;
@@ -29,7 +27,7 @@ public class Utils
                 break;
             case 'H':
                 out = 7;
-                break;  
+                break;
         }
         return out;
     }
