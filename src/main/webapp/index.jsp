@@ -12,6 +12,7 @@
     <script src="js/functions.js"></script>
     <script src="js/view.js"></script>
     <link href="css/style.css" rel="stylesheet"/>
+
 </head>
 <body>
 <%
