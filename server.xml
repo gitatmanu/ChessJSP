@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <server description="new server">
-
+	<Context docBase="/home/stuff" path="/static" />
     <featureManager>
         <feature>javaee-8.0</feature>
         <feature>microProfile-3.0</feature>
