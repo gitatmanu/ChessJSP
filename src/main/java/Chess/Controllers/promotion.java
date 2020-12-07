@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 import java.util.HashMap;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/promotion")
+@WebServlet("promotion")
 @MultipartConfig
 public class promotion extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -32,7 +32,7 @@ public class promotion extends HttpServlet {
         Game game = (Game) session.getAttribute("game");
 
         PrintWriter out = response.getWriter();
-        response.setContentType("application/json");
+        rgit esponse.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
         String chosenPiece = request.getParameter("chosenPiece");

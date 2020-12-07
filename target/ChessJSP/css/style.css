@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-image: url("/fondo.jpeg");
+    background-image: url("fondo.jpeg");
     background-repeat: repeat;
 }
  main {

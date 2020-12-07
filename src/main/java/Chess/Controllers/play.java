@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 import java.util.HashMap;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/play")
+@WebServlet("play")
 @MultipartConfig
 public class play extends HttpServlet {
     private static final long serialVersionUID = 1L;
