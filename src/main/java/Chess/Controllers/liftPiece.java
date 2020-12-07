@@ -17,7 +17,7 @@ import com.google.gson.Gson;
 import java.util.HashMap;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("liftPiece")
+@WebServlet("/liftPiece")
 @MultipartConfig
 public class liftPiece extends HttpServlet {
     private static final long serialVersionUID = 1L;
