@@ -1,0 +1,13 @@
+Chess/Piece.class
+Chess/Knight.class
+Chess/Colour.class
+Chess/King.class
+Chess/Controllers/liftPiece.class
+Chess/Controllers/promotion.class
+Chess/Controllers/play.class
+Chess/Bishop.class
+Chess/Game.class
+Chess/Utils.class
+Chess/Pawn.class
+Chess/Rook.class
+Chess/Queen.class
